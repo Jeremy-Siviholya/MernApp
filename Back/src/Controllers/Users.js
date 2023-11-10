@@ -1,5 +1,3 @@
-const express = require("express");
-const { UserSchema } = require("../Models/Users");
 const UserModel = require("../Models/Users");
 
 const getUsers = (req, res) => {
