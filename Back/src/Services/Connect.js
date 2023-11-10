@@ -1,5 +1,4 @@
 const mongoose=require('mongoose')
-
 var con = mongoose.connect("mongodb://localhost:27017/manage",{
     useNewUrlParser:true,
     useUnifieldTopology:true
