@@ -6,7 +6,6 @@ const Connectdb=async ()=>{
   console.log('db connected');
 }
 
-
 module.exports={
   Connectdb
 }
