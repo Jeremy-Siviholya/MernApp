@@ -5,12 +5,13 @@ const {
   getIdUser,
   updateUser,
   DestroyUser,
+  CustomUpdate,
 } = require("../Controllers/Users");
 const router = new express.Router();
 router.post("/SaveUsers", SaveUsers);
 router.get("/getUsers", getUsers);
 router.get("/getUsers/:id", getIdUser);
-router.patch("/updateUser/:id", updateUser);
+router.patch("/updateUser/:id", CustomUpdate);
 router.delete("/destroyUser/:id", DestroyUser);
 
 module.exports = router;

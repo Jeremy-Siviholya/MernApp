@@ -55,4 +55,27 @@ const DestroyUser = async (req, res) => {
   }
 };
 
-module.exports = { SaveUsers, getUsers, getIdUser, updateUser, DestroyUser };
+const CustomUpdate = async (req, res) => {
+  const updatedInfo=Object.keys(req.body)
+ 
+  const userId = req.params.id;
+  try {
+    const users = await UserModel.findById(userId);
+    updatedInfo.forEach((update) => users[update]=req.body[update]);
+    await users.save()
+    if (!users) res.status(404).send("user not find");
+    res.send(users);
+  
+  } catch (e) {
+    res.status(500).send(e);
+  }
+};
+
+module.exports = {
+  SaveUsers,
+  getUsers,
+  getIdUser,
+  updateUser,
+  DestroyUser,
+  CustomUpdate,
+};
