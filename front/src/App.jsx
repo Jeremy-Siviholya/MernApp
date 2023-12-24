@@ -1,13 +1,12 @@
-import * as React from 'react'
+import React from 'react'
+import { Users } from './components/Users/Users';
 
-
-function App() {
-  const [ListUsers,setListUsers]=React.useState([])
-
-  ky.get('',)
+const App = () => {
   return (
-    <div className="bg-gray-300 h-screen w-screen"></div>
+    <div className="bg-[#151515] flex justify-center items-center h-screen w-screen">
+      <Users />
+    </div>
   );
 }
 
-export default App;
+export default App
