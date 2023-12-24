@@ -6,5 +6,14 @@ export const Usersreducer = (state, action) => {
       loading: true,
     };
   }
+   if (action.type === "destroyUser") {
+     return {
+       ...state,
+       ListUsers: action.payload.ListUsers,
+
+     };
+   }
   return state;
 };
+
+

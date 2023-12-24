@@ -1,27 +1,28 @@
-import * as React from 'react'
-import { Modal, TextField, Button} from '@mui/material'
+import * as React from "react";
+import { Modal, TextField, Button } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
-import axios from 'axios';
-import {toast,ToastContainer} from 'react-toastify'
+import axios from "axios";
+import { toast } from "react-toastify";
 
-function AddUsers({open, setOpen}) {
+function AddUsers({ open, setOpen }) {
+  const [values, setvalues] = React.useState({
+    username: "",
+    email: "",
+    password: "",
+  });
 
-const [values, setvalues] = React.useState({
-  username: "",
-  email: "",
-  password: "",
-});
-
-const handleSubmit=(e)=>{
-e.preventDefault()
-
-axios.post("http://localhost:7780/SaveUsers/",values).then(res=>{
-    alert(res.data)
-    setOpen(false)
-}).catch(err=>{
-    alert(err)
-})
-}
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:7780/SaveUsers/", values)
+      .then((res) => {
+        toast.success(res.data);
+        setOpen(false);
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  };
 
   return (
     <div>
@@ -72,7 +73,12 @@ axios.post("http://localhost:7780/SaveUsers/",values).then(res=>{
                 />
               </div>
               <div className="absolute bottom-5 left-5 py-3 rounded-md right-5 flex justify-center ">
-                <Button onClick={handleSubmit} variant="contained" color="info" endIcon={<SendIcon />}>
+                <Button
+                  onClick={handleSubmit}
+                  variant="contained"
+                  color="info"
+                  endIcon={<SendIcon />}
+                >
                   SUBMIT
                 </Button>
               </div>
@@ -84,4 +90,4 @@ axios.post("http://localhost:7780/SaveUsers/",values).then(res=>{
   );
 }
 
-export default AddUsers
+export default AddUsers;

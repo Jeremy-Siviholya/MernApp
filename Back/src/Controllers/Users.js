@@ -1,13 +1,12 @@
 const UserModel = require("../Models/Users");
 const SaveUsers = async (req, res) => {
   try{
-    console.log(req.body);
     const saveUser=new UserModel(req.body)
     const saveUsers= await saveUser.save()
-    res.status(201).send(saveUsers)
+    res.status(201).json("inserted Successfully")
   }
   catch(e){
-    res.status(201).send(e);
+    res.status(201).json(e);
   }
 };
 
@@ -49,10 +48,10 @@ const DestroyUser = async (req, res) => {
   try {
     const userId = req.params.id;
     const users = await UserModel.findByIdAndDelete(userId);
-    if (!users) res.status(404).send("user not find");
-    res.send(users);
+    if (!users) res.status(404).json("user not find");
+    res.status(200).json('destroyed successfuly')
   } catch (e) {
-    res.status(500).send(e);
+    res.status(500).json(e);
   }
 };
 
