@@ -1,6 +1,7 @@
 const UserModel = require("../Models/Users");
 const SaveUsers = async (req, res) => {
   try{
+    console.log(req.body);
     const saveUser=new UserModel(req.body)
     const saveUsers= await saveUser.save()
     res.status(201).send(saveUsers)
