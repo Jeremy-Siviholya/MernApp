@@ -20,7 +20,7 @@ function AddUsers({ open, setOpen }) {
         setOpen(false);
       })
       .catch((err) => {
-        alert(err);
+        toast.error(err)
       });
   };
 
