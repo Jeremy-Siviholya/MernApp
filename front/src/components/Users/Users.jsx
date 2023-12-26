@@ -117,7 +117,7 @@ export const Users = () => {
           </div>
         </div>
       ) : (
-        <div className="w-[840px] h-[300px] bg-gray-700/40 rounded-md relative p-2 space-y-4  ">
+        <div className="w-[840px] h-[300px] rounded-md relative p-2 space-y-4  ">
           {/* <div className="w-full flex gap-3 justify-between">
             <div className="w-[20%] rounded-full h-20 animate-pulse bg-gray-500"></div>
             <div className="w-[70%]  h-20 animate-pulse bg-gray-500"></div>

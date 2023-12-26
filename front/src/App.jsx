@@ -13,7 +13,7 @@ const App = () => {
   return (
     <Router>
       <AnimateRoutes />
-      <div className="bg-[#323232] flex justify-center relative items-center h-screen w-screen">
+      <div className="bg-[#242424] flex justify-center relative items-center h-screen w-screen">
         <Upbar />
         <Users />
         <Pagination />
