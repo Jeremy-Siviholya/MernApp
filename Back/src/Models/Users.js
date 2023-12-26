@@ -1,18 +1,22 @@
 const mongoose = require("mongoose");
 const bcrypt=require('bcryptjs')
+const validator=require('validator')
 
 const UserSchema = new mongoose.Schema({
   username: String,
-  email: String,
+  email: {
+    type:String,
+    required:true,
+    validate(v){
+      if(!validator.isEmail(v)) throw new Error('email invalide')
+    }
+  },
   password:{
     type:String,
     required:true,
-    // validate(v){
-    //   if(!v.lenght<3 )
-    //   {
-
-    //   }
-    // }
+    validate(v){
+      if(v < 3 && v>15 ) throw new Error('taille invalide')
+    }
   }
 });
 

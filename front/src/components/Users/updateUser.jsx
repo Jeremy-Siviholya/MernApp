@@ -53,7 +53,7 @@ const {id}=useParams()
 
   }
 
-  const handleawait=(e)=>{
+  const handleAwait=(e)=>{
     e.stopPropagation()
     navigate("/updateUser/"+id);
   }
@@ -61,10 +61,13 @@ const {id}=useParams()
   return (
     <div>
       <div
-       onClick={handleClose}
+        onClick={handleClose}
         className="w-screen h-screen fixed top-0 bottom-0 left-0 right-0 bg-black/60 z-50 flex justify-center items-center"
       >
-        <div onClick={handleawait} className="w-96 h-[440px] bg-black/40 backdrop-blur-md border rounded-md relative">
+        <div
+          onClick={handleAwait}
+          className="w-96 h-[440px] bg-black/40 backdrop-blur-md border rounded-md relative"
+        >
           <div className="h-[20%] text-white text-2xl shadow-md w-full border-b flex justify-center items-center">
             <h2>UPDATE USERS</h2>
           </div>
@@ -98,7 +101,6 @@ const {id}=useParams()
               </div>
               <div className="bg-white px-2 py-2 rounded-md">
                 <TextField
-                value={values.password}
                   fullWidth
                   onChange={(e) =>
                     setvalues({ ...values, password: e.target.value })

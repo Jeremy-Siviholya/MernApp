@@ -16,11 +16,15 @@ function AddUsers({ open, setOpen }) {
     axios
       .post("http://localhost:7780/SaveUsers/", values)
       .then((res) => {
-        toast.success(res.data);
+     toast.success(res.data);
+
+    
+        
         setOpen(false);
+
       })
       .catch((err) => {
-        toast.error(err)
+         toast.error(err.message);
       });
   };
 
