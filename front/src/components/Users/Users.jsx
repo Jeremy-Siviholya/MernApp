@@ -67,8 +67,8 @@ export const Users = () => {
 
       {userState.loading ? (
         <div className="w-[840px] h-60 wrapperTable overflow-y-auto  border-gray-600">
-          <table className="border-collapse bg-black/50 text-gray-400 w-full  ">
-            <thead className="sticky top-0 left-0 right-0 bg-black/60 backdrop-blur-sm border-t border-b border-gray-600 z-10">
+          <table className="border-collapse bg-black/50 w-full  ">
+            <thead className="sticky top-0 left-0 right-0 bg-black/60 text-gray-300 shadow-sm backdrop-blur-sm border-t border-b border-gray-600 z-10">
               <tr>
                 <td className="border px-10 py-4 font-semibold border-slate-600">
                   USERNAME
@@ -84,7 +84,7 @@ export const Users = () => {
                 </td>
               </tr>
             </thead>
-            <tbody className="">
+            <tbody className="text-gray-400 ">
               {userState.ListUsers.map((list, i) => (
                 <tr key={i} className="uppercase">
                   <td className="border px-10 py-2 border-slate-600 ">
