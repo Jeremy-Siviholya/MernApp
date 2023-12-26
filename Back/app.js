@@ -9,7 +9,7 @@ app.listen(port, console.log(`listening on port http://localhost:${port}`));
 app.use(cors());
 app.use(express.json());
 
-// Connectdb().catch((err) => console.log(err));
+Connectdb().catch((err) => console.log(err));
 
 const UsersRoute = require("./src/routes/Users");
 
