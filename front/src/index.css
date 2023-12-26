@@ -15,9 +15,9 @@
 
 .manch::before{
     content: '';
-    @apply w-40 h-[70px] bg-white absolute -top-[70px] rounded-t-md left-[40%]
+    @apply w-40 h-[70px] bg-white absolute -top-[70px] rounded-t-full left-[40%]
 }
 .manch::after{
     content: '';
-    @apply w-[150px] h-[65px] bg-[#323232]  absolute -top-[65px] rounded-t-md left-[40.6%]
+    @apply w-[150px] h-[65px] bg-[#323232]  absolute -top-[65px] rounded-t-full left-[40.6%]
 }
