@@ -51,15 +51,20 @@ export const Users = () => {
     <div className="space-y-10">
       <AddUsers open={open} setOpen={setOpen} />
       <div className="">
+        {
+          userState.loading ?
         <Button
-        startIcon={<BiCartAdd/>}
+          startIcon={<BiCartAdd />}
           onClick={(e) => setOpen(true)}
           variant="contained"
           color="primary"
         >
           Add New
-        </Button>
- 
+        </Button>:
+        <div className="w-40 h-12 bg-gray-500 animate-pulse rounded-full">
+
+        </div>
+        }
       </div>
 
       {userState.loading ? (
@@ -94,14 +99,12 @@ export const Users = () => {
                 </td>
                 <td className="border px-10 py-2 border-slate-600 ">
                   <div className="flex gap-3 w-full h-full justify-center">
-                    <IconButton onClick={()=>handledelete(list._id)} >
-                      
-                    <BiTrash className="text-[25px] text-pink-600" />
+                    <IconButton onClick={() => handledelete(list._id)}>
+                      <BiTrash className="text-[25px] text-pink-600" />
                     </IconButton>
-                     <IconButton >
-
-                    <BiEdit className="text-[25px] text-green-500" />
-                     </IconButton>
+                    <IconButton>
+                      <BiEdit className="text-[25px] text-green-500" />
+                    </IconButton>
                   </div>
                 </td>
               </tr>
@@ -109,13 +112,25 @@ export const Users = () => {
           </tbody>
         </table>
       ) : (
-        <div className="w-[500px] h-[300px] bg-gray-700/40 rounded-md relative py-7 space-y-4 px-10 ">
-          <div className="w-full flex gap-3 justify-between">
+        <div className="w-[700px] h-[300px] bg-gray-700/40 rounded-md relative p-2 space-y-4  ">
+          {/* <div className="w-full flex gap-3 justify-between">
             <div className="w-[20%] rounded-full h-20 animate-pulse bg-gray-500"></div>
             <div className="w-[70%]  h-20 animate-pulse bg-gray-500"></div>
+          </div> */}
+          <div className="flex gap-1 w-full h-full">
+            <div className="w-1/3 p-3 space-y-1  h-full animate-pulse bg-gray-500">
+              <div className="w-full h-1/2 gap-1 animate-pulse bg-black/30"></div>
+              <div className="w-full h-1/2 gap-1 animate-pulse bg-black/30"></div>
+            </div>
+            <div className="w-1/3 p-3 space-x-1 flex  h-full animate-pulse bg-gray-500">
+              <div className="h-full w-1/2 gap-1 animate-pulse bg-black/30"></div>
+              <div className="h-full w-1/2 gap-1 animate-pulse bg-black/30"></div>
+            </div>
+            <div className="w-1/3 p-3 space-y-1  h-full animate-pulse bg-gray-500">
+              <div className="w-full h-1/2 gap-1 animate-pulse bg-black/30"></div>
+              <div className="w-full h-1/2 gap-1 animate-pulse bg-black/30"></div>
+            </div>
           </div>
-          <div className="w-full rounded-full h-10 animate-pulse bg-gray-500"></div>
-          <div className="w-full rounded-full h-10 animate-pulse bg-gray-500"></div>
         </div>
       )}
     </div>
