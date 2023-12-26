@@ -66,50 +66,53 @@ export const Users = () => {
       </div>
 
       {userState.loading ? (
-        <div className="w-[840px] h-60 wrapperTable overflow-y-auto  border-gray-600">
-          <table className="border-collapse bg-black/50 w-full  ">
-            <thead className="sticky top-0 left-0 right-0 bg-black/60 text-gray-300 shadow-sm backdrop-blur-sm border-t border-b border-gray-600 z-10">
-              <tr>
-                <td className="border px-10 py-4 font-semibold border-slate-600">
-                  USERNAME
-                </td>
-                <td className="border px-10 py-4 font-semibold border-slate-600">
-                  EMAIL
-                </td>
-                <td className="border px-10 py-4 font-semibold border-slate-600">
-                  PASSWORD
-                </td>
-                <td className="border px-10 py-4 font-semibold border-slate-600">
-                  ACTIONS
-                </td>
-              </tr>
-            </thead>
-            <tbody className="text-gray-400 ">
-              {userState.ListUsers.map((list, i) => (
-                <tr key={i} className="uppercase">
-                  <td className="border px-10 py-2 border-slate-600 ">
-                    {list.username}
+        <div className="relative manch">
+
+          <div className="w-[840px] h-60 wrapperTable  overflow-y-auto  border-gray-600">
+            <table className="border-collapse bg-black/50 w-full  ">
+              <thead className="sticky top-0 left-0 right-0 bg-black/60 text-gray-300 shadow-sm backdrop-blur-sm border-t border-b border-gray-600 z-10">
+                <tr>
+                  <td className="border px-10 py-4 font-semibold border-slate-600">
+                    USERNAME
                   </td>
-                  <td className="border px-10 py-2 border-slate-600 ">
-                    {list.email}
+                  <td className="border px-10 py-4 font-semibold border-slate-600">
+                    EMAIL
                   </td>
-                  <td className="border px-2  max-w-[150px] overflow-hidden py-2 border-slate-600 ">
-                    <div className="overflow-hidden">{list.password}</div>
+                  <td className="border px-10 py-4 font-semibold border-slate-600">
+                    PASSWORD
                   </td>
-                  <td className="border px-10 py-2 border-slate-600 ">
-                    <div className="flex gap-3 w-full h-full justify-center">
-                      <IconButton onClick={() => handledelete(list._id)}>
-                        <BiTrash className="text-[25px] text-pink-600" />
-                      </IconButton>
-                      <IconButton>
-                        <BiEdit className="text-[25px] text-green-500" />
-                      </IconButton>
-                    </div>
+                  <td className="border px-10 py-4 font-semibold border-slate-600">
+                    ACTIONS
                   </td>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className="text-gray-400 ">
+                {userState.ListUsers.map((list, i) => (
+                  <tr key={i} className="uppercase">
+                    <td className="border px-10 py-2 border-slate-600 ">
+                      {list.username}
+                    </td>
+                    <td className="border px-10 py-2 border-slate-600 ">
+                      {list.email}
+                    </td>
+                    <td className="border px-2  max-w-[150px] overflow-hidden py-2 border-slate-600 ">
+                      <div className="overflow-hidden">{list.password}</div>
+                    </td>
+                    <td className="border px-10 py-2 border-slate-600 ">
+                      <div className="flex gap-3 w-full h-full justify-center">
+                        <IconButton onClick={() => handledelete(list._id)}>
+                          <BiTrash className="text-[25px] text-pink-600" />
+                        </IconButton>
+                        <IconButton>
+                          <BiEdit className="text-[25px] text-green-500" />
+                        </IconButton>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       ) : (
         <div className="w-[840px] h-[300px] bg-gray-700/40 rounded-md relative p-2 space-y-4  ">

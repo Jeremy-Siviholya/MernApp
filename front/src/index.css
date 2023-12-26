@@ -12,3 +12,12 @@
 .wrapperTable::-webkit-scrollbar-track{
     @apply bg-black/50 border-t border-r border-b border-gray-600 
 }
+
+.manch::before{
+    content: '';
+    @apply w-40 h-[70px] bg-white absolute -top-[70px] rounded-t-md left-[40%]
+}
+.manch::after{
+    content: '';
+    @apply w-[150px] h-[65px] bg-[#323232] z-50 absolute -top-[65px] rounded-t-md left-[40.6%]
+}
