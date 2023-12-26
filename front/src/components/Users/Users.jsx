@@ -185,11 +185,13 @@ export const Users = () => {
                 </tr>
               </thead>
               <tbody className="text-gray-400 ">
-                  {(rowsPerPage > 0
-                  ? userState.ListUsers.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                {(rowsPerPage > 0
+                  ? userState.ListUsers.slice(
+                      page * rowsPerPage,
+                      page * rowsPerPage + rowsPerPage
+                    )
                   : userState.ListUsers
-                  ).map((list, i) => (
-
+                ).map((list, i) => (
                   <tr key={i} className="uppercase">
                     <td className="border px-10 py-2 border-slate-600 ">
                       {list.username}
@@ -220,9 +222,8 @@ export const Users = () => {
           <div className="bg-black/50 backdrop-blur-md border border-gray-600 h-20 fixed bottom-3 w-[840px] rounded-md flex justify-between">
             <Paper sx={{ width: "100%" }} variant="square">
               <TablePagination
-                sx={{ width: "840px",height:'75px' }}
+                sx={{ width: "840px", height: "75px" }}
                 rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
-               
                 count={userState.ListUsers.length}
                 rowsPerPage={rowsPerPage}
                 page={page}
@@ -238,14 +239,9 @@ export const Users = () => {
               />
             </Paper>
           </div>
-
         </div>
       ) : (
         <div className="w-[840px] h-[300px] rounded-md relative p-2 space-y-4  ">
-          {/* <div className="w-full flex gap-3 justify-between">
-            <div className="w-[20%] rounded-full h-20 animate-pulse bg-gray-500"></div>
-            <div className="w-[70%]  h-20 animate-pulse bg-gray-500"></div>
-          </div> */}
           <div className="flex gap-1 w-full h-full">
             <div className="w-1/3 p-3 space-y-1  h-full animate-pulse bg-gray-500">
               <div className="w-full h-1/2 gap-1 animate-pulse bg-black/30"></div>
@@ -259,6 +255,11 @@ export const Users = () => {
               <div className="w-full h-1/2 gap-1 animate-pulse bg-black/30"></div>
               <div className="w-full h-1/2 gap-1 animate-pulse bg-black/30"></div>
             </div>
+          </div>
+
+          <div className=" w-[820px] bg-black/50 rounded-md animate-pulse p-1 flex gap-1 ">
+            <div className="w-[30%] rounded-md h-14 animate-pulse bg-gray-500"></div>
+            <div className="w-[70%] rounded-md  h-14 animate-pulse bg-gray-500"></div>
           </div>
         </div>
       )}
