@@ -4,7 +4,7 @@ import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import Upbar from './components/Upbar/Upbar';
 import { Pagination } from './components/Users/Pagination';
-import { BrowserRouter as Router,Routes,Route } from 'react-router-dom'
+import { BrowserRouter as Router} from 'react-router-dom'
 import AnimateRoutes from './components/Routes/animateRoutes';
 
 
