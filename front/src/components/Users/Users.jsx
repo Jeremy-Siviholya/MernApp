@@ -6,6 +6,7 @@ import AddUsers from "./AddUsers";
 import Button from '@mui/material/Button'
 import IconButton from '@mui/material/IconButton'
 import {toast } from 'react-toastify'
+import {Link} from 'react-router-dom'
 
 export const Users = () => {
     const [open,setOpen]=React.useState(false)
@@ -67,7 +68,6 @@ export const Users = () => {
 
       {userState.loading ? (
         <div className="relative manch">
-
           <div className="w-[840px] h-60 wrapperTable  overflow-y-auto  border-gray-600">
             <table className="border-collapse bg-black/50 w-full  ">
               <thead className="sticky top-0 left-0 right-0 bg-black/60 text-gray-300 shadow-sm backdrop-blur-sm border-t border-b border-gray-600 z-10">
@@ -103,9 +103,11 @@ export const Users = () => {
                         <IconButton onClick={() => handledelete(list._id)}>
                           <BiTrash className="text-[25px] text-pink-600" />
                         </IconButton>
-                        <IconButton>
-                          <BiEdit className="text-[25px] text-green-500" />
-                        </IconButton>
+                        <Link to={`/updateUser/${list._id}`}>
+                          <IconButton>
+                            <BiEdit className="text-[25px] text-green-500" />
+                          </IconButton>
+                        </Link>
                       </div>
                     </td>
                   </tr>

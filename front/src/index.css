@@ -19,5 +19,5 @@
 }
 .manch::after{
     content: '';
-    @apply w-[150px] h-[65px] bg-[#323232] z-50 absolute -top-[65px] rounded-t-md left-[40.6%]
+    @apply w-[150px] h-[65px] bg-[#323232]  absolute -top-[65px] rounded-t-md left-[40.6%]
 }

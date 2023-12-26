@@ -57,17 +57,17 @@ const DestroyUser = async (req, res) => {
 
 const CustomUpdate = async (req, res) => {
   const updatedInfo=Object.keys(req.body)
- 
+
   const userId = req.params.id;
   try {
     const users = await UserModel.findById(userId);
     updatedInfo.forEach((update) => users[update]=req.body[update]);
     await users.save()
-    if (!users) res.status(404).send("user not find");
-    res.send(users);
+    if (!users) res.status(404).json("user not find");
+    res.status(200).json('user updated successfully');
   
   } catch (e) {
-    res.status(500).send(e);
+    res.status(500).json(e);
   }
 };
 
