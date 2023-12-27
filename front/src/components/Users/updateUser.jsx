@@ -35,8 +35,14 @@ const {id}=useParams()
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+     const formdata = new FormData();
+     formdata.append("image", file);
+     formdata.append("username", values.username);
+     formdata.append("email", values.email);
+     formdata.append("password", values.password);
     axios
-      .patch("http://localhost:7780/updateUser/" + id, values)
+      .patch("http://localhost:7780/updateUser/" + id, formdata)
       .then((res) => {
         navigate('/')
         toast.success(res.data);
@@ -58,6 +64,11 @@ const {id}=useParams()
     navigate("/updateUser/"+id);
   }
 
+    const [file, setFile] = React.useState();
+    const handleFile = (e) => {
+      setFile(e.target.files[0]);
+    };
+
   return (
     <div>
       <div
@@ -66,7 +77,7 @@ const {id}=useParams()
       >
         <div
           onClick={handleAwait}
-          className="w-96 h-[440px] bg-black/40 backdrop-blur-md border rounded-md relative"
+          className="w-[400px] h-[500px] bg-black/40 backdrop-blur-md border rounded-md relative"
         >
           <div className="h-[20%] text-white text-2xl shadow-md w-full border-b flex justify-center items-center">
             <h2>UPDATE USERS</h2>
@@ -110,7 +121,16 @@ const {id}=useParams()
                   variant="outlined"
                 />
               </div>
-              <div className="absolute bottom-5 left-5 py-3 rounded-md right-5 flex justify-center ">
+              <div className="bg-white px-2 py-2 rounded-md">
+                <input
+                  type="file"
+                  onChange={handleFile}
+                  className="file:bg-purple-600 file:outline-none
+                file:border-none file:px-4 file:py-2 file:text-white
+                 file:mr-4 file:rounded-md file:hover:bg-purple-800 file:duration-500"
+                />
+              </div>
+              <div className="absolute bottom-0 left-5 py-3 rounded-md right-5 flex justify-center ">
                 <Button
                   onClick={handleSubmit}
                   variant="contained"

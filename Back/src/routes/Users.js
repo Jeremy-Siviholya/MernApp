@@ -9,10 +9,10 @@ const {
 } = require("../Controllers/Users");
 const upload = require("../Controllers/Upload");
 const router = new express.Router();
-router.post("/SaveUsers",upload.single("picture"), SaveUsers);
+router.post("/SaveUsers",upload.single("image"), SaveUsers);
 router.get("/getUsers", getUsers);
 router.get("/getUsers/:id", getIdUser);
-router.patch("/updateUser/:id", CustomUpdate);
+router.patch("/updateUser/:id",upload.single("image"), CustomUpdate);
 router.delete("/destroyUser/:id", DestroyUser);
 
 module.exports = router;

@@ -179,7 +179,9 @@ export const Users = () => {
                   PASSWORD
                 </td>
                 <td className="border-r border-l w-[15%] py-4 px-3 font-semibold border-slate-600 border-t">
-                  PICTURE
+                  <div className="w-full h-full flex justify-center ">
+                    PICTURE
+                  </div>
                 </td>
                 <td className="border-r border-l w-[15%] py-4 px-3 font-semibold border-slate-600 border-t">
                   <div className="w-full h-full flex justify-center ">
@@ -200,7 +202,7 @@ export const Users = () => {
                   : userState.ListUsers
                 ).map((list, i) => (
                   <tr key={i} className="">
-                    <td className="border w-[15%] px-3 py-2 border-slate-600 ">
+                    <td className="border w-[15%] px-3 py-2 border-slate-600 uppercase">
                       {list.username}
                     </td>
                     <td className="border w-[35%] px-3 py-2 border-slate-600 ">
@@ -210,7 +212,13 @@ export const Users = () => {
                       <div className="overflow-hidden">{list.password}</div>
                     </td>
                     <td className="border w-[15%] px-3  max-w-[150px] overflow-hidden py-2 border-slate-600 ">
-                      <div className="overflow-hidden">{list.picture}</div>
+                      <div className="overflow-hidden w-full flex justify-center h-full ">
+                        <img
+                          className="w-12 rounded-md border-2 h-12 object-cover bg-center "
+                          src={`http://localhost:7780/images/${list.picture}`}
+                          alt="hello"
+                        />
+                      </div>
                     </td>
                     <td className="border w-[15%] px-3 py-2 border-slate-600 ">
                       <div className="flex gap-3 w-full h-full justify-center">

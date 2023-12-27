@@ -1,9 +1,16 @@
 const UserModel = require("../Models/Users");
 const SaveUsers = async (req, res) => {
+  const values = {
+   username:req.body.username,
+   email:req.body.email,
+   password:req.body.password,
+   picture:req.file.filename,
+  }
+
 
   try{
-    const saveUser=new UserModel(req.body)
-    const saveUsers= await saveUser.save()
+    const saveUser=new UserModel(values)
+    await saveUser.save()
     res.status(201).json("inserted Successfully")
   }
   catch(e){
@@ -57,12 +64,19 @@ const DestroyUser = async (req, res) => {
 };
 
 const CustomUpdate = async (req, res) => {
-  const updatedInfo=Object.keys(req.body)
+
+    const values = {
+      username: req.body.username,
+      email: req.body.email,
+      password: req.body.password,
+      picture: req.file.filename,
+    };
+  const updatedInfo=Object.keys(values)
 
   const userId = req.params.id;
   try {
     const users = await UserModel.findById(userId);
-    updatedInfo.forEach((update) => users[update]=req.body[update]);
+    updatedInfo.forEach((update) => users[update]=values[update]);
     await users.save()
     if (!users) res.status(404).json("user not find");
     res.status(200).json('user updated successfully');
