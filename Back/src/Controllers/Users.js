@@ -77,7 +77,7 @@ const CustomUpdate = async (req, res) => {
     updatedInfo.forEach((update) => (users[update] = values[update]));
     await users.save();
     if (!users) res.status(404).json("user not find");
-    res.status(200).json("user updated successfully");
+    res.status(200).json("updated successfully");
   } catch (e) {
     res.status(500).json(e);
   }
