@@ -1,6 +1,6 @@
 import * as React from "react";
 import axios from "axios";
-import { BiTrash, BiEdit, BiCartAdd } from "react-icons/bi";
+import { BiTrash, BiEdit, BiCartAdd, BiSearch } from "react-icons/bi";
 import { Usersreducer } from "./Users.reducer";
 import AddUsers from "./AddUsers";
 import Button from '@mui/material/Button'
@@ -13,7 +13,7 @@ import FirstPageIcon from "@mui/icons-material/FirstPage";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import LastPageIcon from "@mui/icons-material/LastPage";
-import { Paper, TablePagination } from "@mui/material";
+import {TablePagination } from "@mui/material";
 
 
 function TablePaginationActions(props) {
@@ -146,19 +146,52 @@ export const Users = () => {
     }).catch(err=>{})
   }
 
+    const [query, setQuery] = React.useState("");
+
+    const keys = ["username","email"];
+
+    const search = (data) => {
+      return data.filter((list) =>
+        keys.some(
+          (key) =>
+            list[key].toLowerCase().includes(query) ||
+            list[key].toUpperCase().includes(query)
+        )
+      );
+    };
+
   return (
     <div className="space-y-10">
       <AddUsers open={open} setOpen={setOpen} />
-      <div className="">
+      <div className="w-[890px] ">
         {userState.loading ? (
-          <Button
-            startIcon={<BiCartAdd />}
-            onClick={(e) => setOpen(true)}
-            variant="contained"
-            color="primary"
-          >
-            Add New
-          </Button>
+          <div className="flex justify-between w-full">
+            <button className="bg-[#0099ff] flex gap-2 text-white shadow-md rounded-md hover:bg-[#1565C0] duration-300 items-center py-2 px-3">
+              <span>
+                <BiCartAdd className=" text-[20px]" />
+              </span>
+              <span>Add New</span>
+            </button>
+            <Button
+              startIcon={<BiCartAdd />}
+              onClick={(e) => setOpen(true)}
+              variant="contained"
+              color="primary"
+            >
+              Add New
+            </Button>
+            <div className="flex rounded shadow-md overflow-hidden relative  bg-black/50 pl-3">
+              <input
+              onChange={(e)=>setQuery(e.target.value)}
+                type="search"
+                placeholder="search..."
+                className="outline-none border-none bg-transparent text-gray-300"
+              />
+              <div className="bg-black/50 backdrop-blur-md flex items-center w-10 justify-center absolute right-0 top-0 bottom-0">
+                <BiSearch className="text-[20px] text-white" />
+              </div>
+            </div>
+          </div>
         ) : (
           <div className="w-40 h-12 bg-white/10 animate-pulse rounded-full"></div>
         )}
@@ -199,7 +232,7 @@ export const Users = () => {
                       page * rowsPerPage,
                       page * rowsPerPage + rowsPerPage
                     )
-                  : userState.ListUsers
+                  : (search( userState.ListUsers))
                 ).map((list, i) => (
                   <tr key={i} className="">
                     <td className="border w-[15%] px-3 py-2 border-slate-600 uppercase">
@@ -238,8 +271,9 @@ export const Users = () => {
             </table>
           </div>
           <div className="bg-black/50 backdrop-blur-md border border-gray-600 h-20 fixed bottom-3 w-[890px] rounded-md flex justify-between">
-            <Paper sx={{ width: "100%" }} variant="square">
+            <div className="text-white">
               <TablePagination
+                color="primary"
                 sx={{ width: "890px", height: "75px" }}
                 rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
                 count={userState.ListUsers.length}
@@ -255,7 +289,7 @@ export const Users = () => {
                 onRowsPerPageChange={handleChangeRowsPerPage}
                 ActionsComponent={TablePaginationActions}
               />
-            </Paper>
+            </div>
           </div>
         </div>
       ) : (

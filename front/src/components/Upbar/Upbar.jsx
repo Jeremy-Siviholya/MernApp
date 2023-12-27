@@ -3,7 +3,7 @@ import { BiLogoMongodb } from 'react-icons/bi';
 
 const Upbar = () => {
   return (
-    <div className="bg-black/50  border-b  border-gray-600 h-20 fixed top-0 w-full z-40  flex justify-between">
+    <div className="bg-black/50  border-b  border-gray-600 h-20 fixed top-0 w-[890px] z-40  flex justify-between">
       <div className='text-emerald-500 h-full flex items-center text-[35px] pr-5'>
         <BiLogoMongodb/>
       </div>
