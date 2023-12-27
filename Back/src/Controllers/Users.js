@@ -4,9 +4,9 @@ const SaveUsers = async (req, res) => {
     req.body.username,
     req.body.email,
     req.body.password,
-    // req.file.filename,
+    req.file.filename,
   ];
-  console.log(values);
+  console.log(req.file);
   try{
     const saveUser=new UserModel(req.body)
     const saveUsers= await saveUser.save()

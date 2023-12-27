@@ -14,8 +14,7 @@ function AddUsers({ open, setOpen }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const formdata=new FormData()
-    formdata.append('file',file)
-    formdata.append("picture", values.picture);
+    formdata.append('image',file)
     formdata.append('username',values.username)
     formdata.append('email',values.email)
     formdata.append('password',values.password)
