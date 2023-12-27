@@ -4,13 +4,8 @@
 
 
 .wrapperTable::-webkit-scrollbar{
-    @apply w-[7px] px-1
+    @apply w-[0px] 
 }
-.wrapperTable::-webkit-scrollbar-thumb{
-    @apply bg-white/90 rounded-b-full hover:bg-slate-300 duration-500
-}
-.wrapperTable::-webkit-scrollbar-track{
-    @apply bg-black/50 border-t border-r border-b border-gray-600 
-}
+
 
 

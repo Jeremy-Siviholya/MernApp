@@ -3,7 +3,11 @@ const bcrypt=require('bcryptjs')
 const validator=require('validator')
 
 const UserSchema = new mongoose.Schema({
-  username: String,
+  username: {
+    type:String,
+    required:true,
+  },
+
   email: {
     type:String,
     required:true,
@@ -17,7 +21,13 @@ const UserSchema = new mongoose.Schema({
     validate(v){
       if(v < 3 && v>15 ) throw new Error('taille invalide')
     }
+  },
+   picture:{
+    type:String,
+    required:false
   }
+
+  
 });
 
 UserSchema.pre('save',async function(){

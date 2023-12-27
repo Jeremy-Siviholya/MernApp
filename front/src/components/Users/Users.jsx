@@ -166,24 +166,31 @@ export const Users = () => {
 
       {userState.loading ? (
         <div className="relative manch">
-          <div className="w-[840px] h-60 wrapperTable  overflow-y-auto  border-gray-600">
-            <table className="border-collapse bg-black/50 w-full  ">
-              <thead className="sticky top-0 left-0 right-0 bg-black/60 text-gray-300 shadow-sm backdrop-blur-sm border-t border-b border-gray-600 z-10">
-                <tr>
-                  <td className="border px-10 py-4 font-semibold border-slate-600">
-                    USERNAME
-                  </td>
-                  <td className="border px-10 py-4 font-semibold border-slate-600">
-                    EMAIL
-                  </td>
-                  <td className="border px-10 py-4 font-semibold border-slate-600">
-                    PASSWORD
-                  </td>
-                  <td className="border px-10 py-4 font-semibold border-slate-600">
+          <table className="w-[890px] border-collapse">
+            <thead className=" bg-black/60 text-gray-300 shadow-md   border-gray-600 z-10">
+              <tr>
+                <td className="border-r border-l w-[15%] py-4 px-3 font-semibold border-slate-600 border-t">
+                  USERNAME
+                </td>
+                <td className="border-r border-l w-[35%] py-4 px-3 font-semibold border-slate-600 border-t">
+                  EMAIL
+                </td>
+                <td className="border-r border-l w-[20%] py-4 px-3 font-semibold border-slate-600 border-t">
+                  PASSWORD
+                </td>
+                <td className="border-r border-l w-[15%] py-4 px-3 font-semibold border-slate-600 border-t">
+                  PICTURE
+                </td>
+                <td className="border-r border-l w-[15%] py-4 px-3 font-semibold border-slate-600 border-t">
+                  <div className="w-full h-full flex justify-center ">
                     ACTIONS
-                  </td>
-                </tr>
-              </thead>
+                  </div>
+                </td>
+              </tr>
+            </thead>
+          </table>
+          <div className="w-[890px] h-[233px] wrapperTable  overflow-y-auto overscroll-y-auto">
+            <table className="border-collapse bg-black/50 w-full  ">
               <tbody className="text-gray-400 ">
                 {(rowsPerPage > 0
                   ? userState.ListUsers.slice(
@@ -192,17 +199,20 @@ export const Users = () => {
                     )
                   : userState.ListUsers
                 ).map((list, i) => (
-                  <tr key={i} className="uppercase">
-                    <td className="border px-10 py-2 border-slate-600 ">
+                  <tr key={i} className="">
+                    <td className="border w-[15%] px-3 py-2 border-slate-600 ">
                       {list.username}
                     </td>
-                    <td className="border px-10 py-2 border-slate-600 ">
+                    <td className="border w-[35%] px-3 py-2 border-slate-600 ">
                       {list.email}
                     </td>
-                    <td className="border px-2  max-w-[150px] overflow-hidden py-2 border-slate-600 ">
+                    <td className="border w-[20%] px-3  max-w-[150px] overflow-hidden py-2 border-slate-600 ">
                       <div className="overflow-hidden">{list.password}</div>
                     </td>
-                    <td className="border px-10 py-2 border-slate-600 ">
+                    <td className="border w-[15%] px-3  max-w-[150px] overflow-hidden py-2 border-slate-600 ">
+                      <div className="overflow-hidden">{list.picture}</div>
+                    </td>
+                    <td className="border w-[15%] px-3 py-2 border-slate-600 ">
                       <div className="flex gap-3 w-full h-full justify-center">
                         <IconButton onClick={() => handledelete(list._id)}>
                           <BiTrash className="text-[25px] text-pink-600" />
@@ -219,10 +229,10 @@ export const Users = () => {
               </tbody>
             </table>
           </div>
-          <div className="bg-black/50 backdrop-blur-md border border-gray-600 h-20 fixed bottom-3 w-[840px] rounded-md flex justify-between">
+          <div className="bg-black/50 backdrop-blur-md border border-gray-600 h-20 fixed bottom-3 w-[890px] rounded-md flex justify-between">
             <Paper sx={{ width: "100%" }} variant="square">
               <TablePagination
-                sx={{ width: "840px", height: "75px" }}
+                sx={{ width: "890px", height: "75px" }}
                 rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
                 count={userState.ListUsers.length}
                 rowsPerPage={rowsPerPage}
@@ -241,25 +251,25 @@ export const Users = () => {
           </div>
         </div>
       ) : (
-        <div className="w-[840px] h-[300px] rounded-md relative p-2 space-y-4  ">
+        <div className="w-[890px] h-[300px] rounded-md relative p-2 space-y-4  ">
           <div className="flex gap-1 w-full h-full">
-            <div className="w-1/3 p-1 space-y-1  h-full animate-pulse bg-black/50 ">
-              <div className="w-full h-1/2 gap-1 animate-pulse bg-gray-700/50"></div>
-              <div className="w-full h-[48.5%] gap-1 animate-pulse bg-gray-700/50"></div>
+            <div className="w-1/3 p-1 space-y-1 rounded-md  h-full animate-pulse bg-white/10 ">
+              <div className="w-full h-1/2 gap-1 animate-pulse bg-black/30 rounded-md "></div>
+              <div className="w-full h-[48.5%] gap-1 animate-pulse bg-black/30 rounded-md "></div>
             </div>
-            <div className="w-1/3 p-1 space-x-1 flex  h-full animate-pulse bg-black/50 ">
-              <div className="h-full w-1/2 gap-1 animate-pulse bg-gray-700/50"></div>
-              <div className="h-full w-1/2 gap-1 animate-pulse bg-gray-700/50"></div>
+            <div className="w-1/3 p-1 space-x-1 flex  h-full rounded-md animate-pulse bg-white/10 ">
+              <div className="h-full w-1/2 gap-1 animate-pulse rounded-lg bg-black/30"></div>
+              <div className="h-full w-1/2 gap-1 animate-pulse rounded-lg bg-black/30"></div>
             </div>
-            <div className="w-1/3 p-1 space-y-1  h-full animate-pulse bg-black/50 ">
-              <div className="w-full h-1/2 gap-1 animate-pulse bg-gray-700/50"></div>
-              <div className="w-full h-[48.5%] gap-1 animate-pulse bg-gray-700/50"></div>
+            <div className="w-1/3 p-1 space-y-1 rounded-md  h-full animate-pulse bg-white/10 ">
+              <div className="w-full h-1/2 gap-1 animate-pulse bg-black/30 rounded-md "></div>
+              <div className="w-full h-[48.5%] gap-1 animate-pulse bg-black/30 rounded-md "></div>
             </div>
           </div>
 
-          <div className=" w-[820px] bg-black/50 rounded-md animate-pulse p-1 flex gap-1 ">
-            <div className="w-[30%] rounded-md h-14 animate-pulse bg-gray-600/50"></div>
-            <div className="w-[70%] rounded-md  h-14 animate-pulse bg-gray-700/50"></div>
+          <div className=" w-[820px] bg-white/10 rounded-md animate-pulse p-1 flex gap-1 ">
+            <div className="w-[30%] rounded-md h-14 animate-pulse bg-black/30"></div>
+            <div className="w-[70%] rounded-md  h-14 animate-pulse bg-black/30"></div>
           </div>
         </div>
       )}

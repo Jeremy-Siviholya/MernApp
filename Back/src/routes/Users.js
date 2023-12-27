@@ -7,8 +7,9 @@ const {
   DestroyUser,
   CustomUpdate,
 } = require("../Controllers/Users");
+const upload = require("../Controllers/Upload");
 const router = new express.Router();
-router.post("/SaveUsers", SaveUsers);
+router.post("/SaveUsers",upload.single("picture"), SaveUsers);
 router.get("/getUsers", getUsers);
 router.get("/getUsers/:id", getIdUser);
 router.patch("/updateUser/:id", CustomUpdate);
