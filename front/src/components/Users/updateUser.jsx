@@ -77,17 +77,17 @@ const {id}=useParams()
       >
         <div
           onClick={handleAwait}
-          className="w-[400px] h-[500px] bg-black/40 backdrop-blur-md border rounded-md relative"
+          className="w-[400px] h-[500px] bg-white/90 backdrop-blur-md border rounded-md relative"
         >
-          <div className="h-[20%] text-white text-2xl shadow-md w-full border-b flex justify-center items-center">
+          <div className="h-[15%] text-gray-600 text-3xl shadow-md w-full border-b flex justify-center items-center">
             <h2>UPDATE USERS</h2>
           </div>
-          <div className="h-[80%] w-full ">
+          <div className="h-[85%] w-full ">
             <form
               onSubmit={handleSubmit}
               className="px-7 py-4  space-y-4 h-full relative"
             >
-              <div className="bg-white px-2 py-2 rounded-md">
+              <div className=" px-2 py-2 rounded-md">
                 <TextField
                   fullWidth
                   value={values.username}
@@ -98,7 +98,7 @@ const {id}=useParams()
                   variant="outlined"
                 />
               </div>
-              <div className="bg-white px-2 py-2 rounded-md">
+              <div className=" px-2 py-2 rounded-md">
                 <TextField
                   fullWidth
                   value={values.email}
@@ -110,7 +110,7 @@ const {id}=useParams()
                   variant="outlined"
                 />
               </div>
-              <div className="bg-white px-2 py-2 rounded-md">
+              <div className=" px-2 py-2 rounded-md">
                 <TextField
                   fullWidth
                   onChange={(e) =>
@@ -121,13 +121,13 @@ const {id}=useParams()
                   variant="outlined"
                 />
               </div>
-              <div className="bg-white px-2 py-2 rounded-md">
+              <div className="bg-gray-300 px-2 py-2 rounded-md">
                 <input
                   type="file"
                   onChange={handleFile}
                   className="file:bg-purple-600 file:outline-none
                 file:border-none file:px-4 file:py-2 file:text-white
-                 file:mr-4 file:rounded-md file:hover:bg-purple-800 file:duration-500"
+                 file:mr-4 file:rounded-full file:hover:bg-purple-800 file:duration-500"
                 />
               </div>
               <div className="absolute bottom-0 left-5 py-3 rounded-md right-5 flex justify-center ">

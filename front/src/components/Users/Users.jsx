@@ -182,7 +182,7 @@ export const Users = () => {
             </Button>
             <div className="flex rounded shadow-md overflow-hidden relative  bg-black/50 pl-3">
               <input
-              onChange={(e)=>setQuery(e.target.value)}
+                onChange={(e) => setQuery(e.target.value)}
                 type="search"
                 placeholder="search..."
                 className="outline-none border-none bg-transparent text-gray-300"
@@ -193,7 +193,17 @@ export const Users = () => {
             </div>
           </div>
         ) : (
-          <div className="w-40 h-12 bg-white/10 animate-pulse rounded-full"></div>
+          <div className="w-[870px] flex justify-between">
+            <div className="w-40 h-12 bg-white/10 animate-pulse rounded-full"></div>
+            <div className="w-52 flex items-center h-11 bg-white/10 relative animate-pulse rounded-md ">
+              <div className="bg-black/30 animate-pulse p-1 rounded-full absolute left-2 w-[150px] h-8 ">
+                
+              </div>
+              <div className="bg-black/30 animate-pulse p-1 rounded-md absolute right-2 ">
+                <BiSearch className="text-gray-400 text-[25px]" />
+              </div>
+            </div>
+          </div>
         )}
       </div>
 
@@ -232,7 +242,7 @@ export const Users = () => {
                       page * rowsPerPage,
                       page * rowsPerPage + rowsPerPage
                     )
-                  : (search( userState.ListUsers))
+                  : search(userState.ListUsers)
                 ).map((list, i) => (
                   <tr key={i} className="">
                     <td className="border w-[15%] px-3 py-2 border-slate-600 uppercase">
