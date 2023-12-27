@@ -1,12 +1,6 @@
 const UserModel = require("../Models/Users");
 const SaveUsers = async (req, res) => {
-  const values = [
-    req.body.username,
-    req.body.email,
-    req.body.password,
-    req.file.filename,
-  ];
-  console.log(req.file);
+
   try{
     const saveUser=new UserModel(req.body)
     const saveUsers= await saveUser.save()

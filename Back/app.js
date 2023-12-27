@@ -13,5 +13,18 @@ app.use(express.static("public"));
 Connectdb().catch((err) => console.log(err));
 
 const UsersRoute = require("./src/routes/Users");
+const upload = require("./src/Controllers/Upload");
 
 app.use(UsersRoute);
+
+app.post('/post', upload.single('image'),(req,res)=>{
+      const values = [
+        req.body.username,
+        req.body.email,
+        req.body.password,
+        req.file.filename,
+      ];
+      console.log(values);
+    //  console.log(req.file);
+    //  console.log(req.body)
+})

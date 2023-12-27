@@ -20,15 +20,14 @@ function AddUsers({ open, setOpen }) {
     formdata.append('password',values.password)
 
     axios
-      .post("http://localhost:7780/SaveUsers/",formdata)
+      .post("http://localhost:7780/post/", formdata)
       .then((res) => {
-     toast.success(res.data);
+        toast.success(res.data);
         console.log(formdata);
         setOpen(false);
-
       })
       .catch((err) => {
-         toast.error(err.message);
+        toast.error(err.message);
       });
   };
 
