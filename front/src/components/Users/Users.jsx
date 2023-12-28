@@ -13,7 +13,7 @@ import FirstPageIcon from "@mui/icons-material/FirstPage";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import LastPageIcon from "@mui/icons-material/LastPage";
-import {TablePagination } from "@mui/material";
+import {Paper, TablePagination } from "@mui/material";
 
 
 function TablePaginationActions(props) {
@@ -166,12 +166,6 @@ export const Users = () => {
       <div className="w-[890px] ">
         {userState.loading ? (
           <div className="flex justify-between w-full">
-            <button className="bg-[#0099ff] flex gap-2 text-white shadow-md rounded-md hover:bg-[#1565C0] duration-300 items-center py-2 px-3">
-              <span>
-                <BiCartAdd className=" text-[20px]" />
-              </span>
-              <span>Add New</span>
-            </button>
             <Button
               startIcon={<BiCartAdd />}
               onClick={(e) => setOpen(true)}
@@ -180,15 +174,15 @@ export const Users = () => {
             >
               Add New
             </Button>
-            <div className="flex rounded shadow-md overflow-hidden relative  bg-black/50 pl-3">
+            <div className="flex rounded  overflow-hidden relative   bg-white/70 pl-3">
               <input
                 onChange={(e) => setQuery(e.target.value)}
                 type="search"
                 placeholder="search..."
-                className="outline-none border-none bg-transparent text-gray-300"
+                className="outline-none border-none bg-transparent text-gray-600"
               />
-              <div className="bg-black/50 backdrop-blur-md flex items-center w-10 justify-center absolute right-0 top-0 bottom-0">
-                <BiSearch className="text-[20px] text-white" />
+              <div className="bg-white backdrop-blur-md flex items-center w-10 justify-center absolute right-0 top-0 bottom-0">
+                <BiSearch className="text-[20px] text-[#0099ff]" />
               </div>
             </div>
           </div>
@@ -196,9 +190,7 @@ export const Users = () => {
           <div className="w-[870px] flex justify-between">
             <div className="w-40 h-12 bg-white/10 animate-pulse rounded-full"></div>
             <div className="w-52 flex items-center h-11 bg-white/10 relative animate-pulse rounded-md ">
-              <div className="bg-black/30 animate-pulse p-1 rounded-full absolute left-2 w-[150px] h-8 ">
-                
-              </div>
+              <div className="bg-black/30 animate-pulse p-1 rounded-full absolute left-2 w-[150px] h-8 "></div>
               <div className="bg-black/30 animate-pulse p-1 rounded-md absolute right-2 ">
                 <BiSearch className="text-gray-400 text-[25px]" />
               </div>
@@ -210,23 +202,23 @@ export const Users = () => {
       {userState.loading ? (
         <div className="relative manch">
           <table className="w-[890px] border-collapse">
-            <thead className=" bg-black/60 text-gray-300 shadow-md   border-gray-600 z-10">
+            <thead className=" bg-white/60 text-gray-600 shadow-md   border-gray-600 z-10">
               <tr>
-                <td className="border-r border-l w-[15%] py-4 px-3 font-semibold border-slate-600 border-t">
+                <td className="border-r border-l w-[15%] py-4 px-3 font-semibold border-slate-300 border-t">
                   USERNAME
                 </td>
-                <td className="border-r border-l w-[35%] py-4 px-3 font-semibold border-slate-600 border-t">
+                <td className="border-r border-l w-[35%] py-4 px-3 font-semibold border-slate-300 border-t">
                   EMAIL
                 </td>
-                <td className="border-r border-l w-[20%] py-4 px-3 font-semibold border-slate-600 border-t">
+                <td className="border-r border-l w-[20%] py-4 px-3 font-semibold border-slate-300 border-t">
                   PASSWORD
                 </td>
-                <td className="border-r border-l w-[15%] py-4 px-3 font-semibold border-slate-600 border-t">
+                <td className="border-r border-l w-[15%] py-4 px-3 font-semibold border-slate-300 border-t">
                   <div className="w-full h-full flex justify-center ">
                     PICTURE
                   </div>
                 </td>
-                <td className="border-r border-l w-[15%] py-4 px-3 font-semibold border-slate-600 border-t">
+                <td className="border-r border-l w-[15%] py-4 px-3 font-semibold border-slate-300 border-t">
                   <div className="w-full h-full flex justify-center ">
                     ACTIONS
                   </div>
@@ -235,8 +227,8 @@ export const Users = () => {
             </thead>
           </table>
           <div className="w-[890px] h-[233px] wrapperTable  overflow-y-auto overscroll-y-auto">
-            <table className="border-collapse bg-black/50 w-full  ">
-              <tbody className="text-gray-400 ">
+            <table className="border-collapse bg-white/50 w-full  ">
+              <tbody className="text-gray-500 ">
                 {(rowsPerPage > 0
                   ? userState.ListUsers.slice(
                       page * rowsPerPage,
@@ -245,25 +237,25 @@ export const Users = () => {
                   : search(userState.ListUsers)
                 ).map((list, i) => (
                   <tr key={i} className="">
-                    <td className="border w-[15%] px-3 py-2 border-slate-600 uppercase">
+                    <td className="border w-[15%] px-3 py-2 border-slate-300 uppercase">
                       {list.username}
                     </td>
-                    <td className="border w-[35%] px-3 py-2 border-slate-600 ">
+                    <td className="border w-[35%] px-3 py-2 border-slate-300 ">
                       {list.email}
                     </td>
-                    <td className="border w-[20%] px-3  max-w-[150px] overflow-hidden py-2 border-slate-600 ">
+                    <td className="border w-[20%] px-3  max-w-[150px] overflow-hidden py-2 border-slate-300 ">
                       <div className="overflow-hidden">{list.password}</div>
                     </td>
-                    <td className="border w-[15%] px-3  max-w-[150px] overflow-hidden py-2 border-slate-600 ">
+                    <td className="border w-[15%] px-3  max-w-[150px] overflow-hidden py-2 border-slate-300 ">
                       <div className="overflow-hidden w-full flex justify-center h-full ">
                         <img
-                          className="w-12 rounded-md border-2 h-12 object-cover bg-center "
+                          className="w-12 rounded-md border-2 border-[#0099ff] h-12 object-cover bg-center "
                           src={`http://localhost:7780/images/${list.picture}`}
                           alt="hello"
                         />
                       </div>
                     </td>
-                    <td className="border w-[15%] px-3 py-2 border-slate-600 ">
+                    <td className="border w-[15%] px-3 py-2 border-slate-300 ">
                       <div className="flex gap-3 w-full h-full justify-center">
                         <IconButton onClick={() => handledelete(list._id)}>
                           <BiTrash className="text-[25px] text-pink-600" />
@@ -280,11 +272,15 @@ export const Users = () => {
               </tbody>
             </table>
           </div>
-          <div className="bg-black/50 backdrop-blur-md border border-gray-600 h-20 fixed bottom-3 w-[890px] rounded-md flex justify-between">
-            <div className="text-white">
+          <div className="bg-black/50 backdrop-blur-md border  border-gray-300 h-20 fixed bottom-3 w-[890px] rounded-md flex justify-between">
+            <Paper sx={{ opacity: "90%" }}>
               <TablePagination
-                color="primary"
-                sx={{ width: "890px", height: "75px" }}
+                sx={{
+                  width: "890px",
+                  height: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                }}
                 rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
                 count={userState.ListUsers.length}
                 rowsPerPage={rowsPerPage}
@@ -299,7 +295,7 @@ export const Users = () => {
                 onRowsPerPageChange={handleChangeRowsPerPage}
                 ActionsComponent={TablePaginationActions}
               />
-            </div>
+            </Paper>
           </div>
         </div>
       ) : (

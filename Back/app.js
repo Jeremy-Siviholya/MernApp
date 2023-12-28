@@ -15,4 +15,3 @@ Connectdb().catch((err) => console.log(err));
 const UsersRoute = require("./src/routes/Users");
 
 app.use(UsersRoute);
-

@@ -12,7 +12,7 @@ const App = () => {
   return (
     <Router>
       <AnimateRoutes />
-      <div className="bg-black/90 flex justify-center relative items-center h-screen w-screen">
+      <div className="bg-gray-200 flex justify-center relative items-center h-screen w-screen">
         <Upbar />
         <Users />
         <ToastContainer
