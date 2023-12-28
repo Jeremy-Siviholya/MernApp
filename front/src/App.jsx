@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Upbar from './components/Upbar/Upbar';
 import { BrowserRouter as Router} from 'react-router-dom'
 import AnimateRoutes from './components/Routes/animateRoutes';
+import Blob from './components/Blobs/Blob';
 
 
 
@@ -13,6 +14,7 @@ const App = () => {
     <Router>
       <AnimateRoutes />
       <div className="bg-gray-200 flex justify-center relative items-center h-screen w-screen">
+        <Blob/>
         <Upbar />
         <Users />
         <ToastContainer

@@ -1,6 +1,6 @@
 import * as React from "react";
 import axios from "axios";
-import { BiTrash, BiEdit, BiCartAdd, BiSearch } from "react-icons/bi";
+import { BiTrash, BiEdit, BiSearch,BiNotepad } from "react-icons/bi";
 import { Usersreducer } from "./Users.reducer";
 import AddUsers from "./AddUsers";
 import Button from '@mui/material/Button'
@@ -167,14 +167,15 @@ export const Users = () => {
         {userState.loading ? (
           <div className="flex justify-between w-full">
             <Button
-              startIcon={<BiCartAdd />}
+              startIcon={<BiNotepad />}
               onClick={(e) => setOpen(true)}
               variant="contained"
+              sx={{borderRadius:'20px'}}
               color="primary"
             >
               Add New
             </Button>
-            <div className="flex rounded  overflow-hidden relative   bg-white/70 pl-3">
+            <div className="flex   overflow-hidden relative   bg-white/70 pl-3">
               <input
                 onChange={(e) => setQuery(e.target.value)}
                 type="search"

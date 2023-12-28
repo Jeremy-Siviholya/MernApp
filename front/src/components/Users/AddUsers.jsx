@@ -13,11 +13,11 @@ function AddUsers({ open, setOpen }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formdata=new FormData()
-    formdata.append('image',file)
-    formdata.append('username',values.username)
-    formdata.append('email',values.email)
-    formdata.append('password',values.password)
+    const formdata = new FormData();
+    formdata.append("image", file);
+    formdata.append("username", values.username);
+    formdata.append("email", values.email);
+    formdata.append("password", values.password);
 
     axios
       .post("http://localhost:7780/SaveUsers/", formdata)
@@ -30,12 +30,10 @@ function AddUsers({ open, setOpen }) {
       });
   };
 
-  const [file,setFile]=React.useState()
-  const handleFile=(e)=>{
-    setFile(e.target.files[0])
-  }
-
-
+  const [file, setFile] = React.useState();
+  const handleFile = (e) => {
+    setFile(e.target.files[0]);
+  };
 
   return (
     <div>
@@ -87,9 +85,9 @@ function AddUsers({ open, setOpen }) {
               </div>
               <div className="bg-gray-300 px-2 py-2 rounded-md">
                 <input
+                  required
                   type="file"
-                   onChange={handleFile}
-                
+                  onChange={handleFile}
                   className="file:bg-purple-600 file:outline-none
                 file:border-none file:px-4 file:py-2 file:text-white
                  file:mr-4 file:rounded-full file:hover:bg-purple-800 file:duration-500"
