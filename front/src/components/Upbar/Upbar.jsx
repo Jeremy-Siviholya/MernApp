@@ -17,7 +17,7 @@ const Upbar = () => {
         <BiLogoNodejs className="text-emerald-600 p-1 bg-white/70 rounded-full shadow-sm" />
       </div>
       <div className=" h-full flex items-center  text-2xl">
-        <h1>MERN CRUD</h1>
+        <h1>MERN STACK</h1>
       </div>
     </div>
   );
