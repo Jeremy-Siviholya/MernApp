@@ -188,11 +188,11 @@ export const Users = () => {
           </div>
         ) : (
           <div className="w-[870px] flex justify-between">
-            <div className="w-40 h-12 bg-white/10 animate-pulse rounded-full"></div>
-            <div className="w-52 flex items-center h-11 bg-white/10 relative animate-pulse rounded-md ">
-              <div className="bg-black/30 animate-pulse p-1 rounded-full absolute left-2 w-[150px] h-8 "></div>
-              <div className="bg-black/30 animate-pulse p-1 rounded-md absolute right-2 ">
-                <BiSearch className="text-gray-400 text-[25px]" />
+            <div className="w-40 h-12 bg-black/10 animate-pulse rounded-full"></div>
+            <div className="w-52 flex items-center h-11 bg-black/10 relative animate-pulse rounded-md ">
+              <div className="bg-black/10 animate-pulse p-1 rounded-full absolute left-2 w-[150px] h-8 "></div>
+              <div className="bg-black/10 animate-pulse p-1 rounded-md absolute right-2 ">
+                <BiSearch className="text-gray-200 text-[25px]" />
               </div>
             </div>
           </div>
@@ -301,23 +301,23 @@ export const Users = () => {
       ) : (
         <div className="w-[890px] h-[300px] rounded-md relative p-2 space-y-4  ">
           <div className="flex gap-1 w-full h-full">
-            <div className="w-1/3 p-1 space-y-1 rounded-md  h-full animate-pulse bg-white/10 ">
-              <div className="w-full h-1/2 gap-1 animate-pulse bg-black/30 rounded-md "></div>
-              <div className="w-full h-[48.5%] gap-1 animate-pulse bg-black/30 rounded-md "></div>
+            <div className="w-1/3 p-1 space-y-1 rounded-md  h-full animate-pulse bg-black/10 ">
+              <div className="w-full h-1/2 gap-1 animate-pulse bg-black/10 rounded-md "></div>
+              <div className="w-full h-[48.5%] gap-1 animate-pulse bg-black/10 rounded-md "></div>
             </div>
-            <div className="w-1/3 p-1 space-x-1 flex  h-full rounded-md animate-pulse bg-white/10 ">
-              <div className="h-full w-1/2 gap-1 animate-pulse rounded-lg bg-black/30"></div>
-              <div className="h-full w-1/2 gap-1 animate-pulse rounded-lg bg-black/30"></div>
+            <div className="w-1/3 p-1 space-x-1 flex  h-full rounded-md animate-pulse bg-black/10 ">
+              <div className="h-full w-1/2 gap-1 animate-pulse rounded-lg bg-black/10"></div>
+              <div className="h-full w-1/2 gap-1 animate-pulse rounded-lg bg-black/10"></div>
             </div>
-            <div className="w-1/3 p-1 space-y-1 rounded-md  h-full animate-pulse bg-white/10 ">
-              <div className="w-full h-1/2 gap-1 animate-pulse bg-black/30 rounded-md "></div>
-              <div className="w-full h-[48.5%] gap-1 animate-pulse bg-black/30 rounded-md "></div>
+            <div className="w-1/3 p-1 space-y-1 rounded-md  h-full animate-pulse bg-black/10 ">
+              <div className="w-full h-1/2 gap-1 animate-pulse bg-black/10 rounded-md "></div>
+              <div className="w-full h-[48.5%] gap-1 animate-pulse bg-black/10 rounded-md "></div>
             </div>
           </div>
 
-          <div className=" w-[870px] bg-white/10 rounded-md animate-pulse p-1 flex gap-1 ">
-            <div className="w-[30%] rounded-md h-14 animate-pulse bg-black/30"></div>
-            <div className="w-[70%] rounded-md  h-14 animate-pulse bg-black/30"></div>
+          <div className=" w-[870px] bg-black/10 rounded-md animate-pulse p-1 flex gap-1 ">
+            <div className="w-[30%] rounded-md h-14 animate-pulse bg-black/10"></div>
+            <div className="w-[70%] rounded-md  h-14 animate-pulse bg-black/10"></div>
           </div>
         </div>
       )}
