@@ -6,6 +6,10 @@ const UserSchema = new mongoose.Schema({
   username: {
     type: String,
     required: true,
+    validate(v) {
+      if (!validator.isLength(v, { min: 3, max: 12 }))
+        throw new Error("Le username doit etre entre 3 et 12 caracteres");
+    },
   },
 
   email: {
@@ -19,7 +23,8 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
     validate(v) {
-      if (v < 3 && v > 15) throw new Error("taille invalide");
+      if (!validator.isLength(v, { min: 3, max: 15 }))
+        throw new Error("Le mot de passe doit etre entre 3 et 15 caracteres");
     },
   },
   picture: {
