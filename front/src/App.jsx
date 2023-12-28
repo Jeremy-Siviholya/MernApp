@@ -62,7 +62,7 @@ const {darkMode,toggle}=React.useContext(DarkModeContext)
             pauseOnFocusLoss
             draggable
             pauseOnHover
-            theme="dark"
+            theme={!darkMode?'dark':'light'}
           />
         </div>
       </Router>

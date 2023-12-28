@@ -3,6 +3,7 @@ import { Modal, TextField, Button } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { DarkModeContext } from "../Contexts/DarkModeContext";
 
 function AddUsers({ open, setOpen }) {
   const [values, setvalues] = React.useState({
@@ -35,6 +36,8 @@ function AddUsers({ open, setOpen }) {
     setFile(e.target.files[0]);
   };
 
+  const {darkMode}=React.useContext(DarkModeContext)
+
   return (
     <div>
       <Modal
@@ -42,8 +45,12 @@ function AddUsers({ open, setOpen }) {
         onClose={(e) => setOpen(false)}
         className="w-screen h-screen flex justify-center items-center"
       >
-        <div className="w-[400px] h-[500px] bg-white/90 backdrop-blur-md border rounded-md relative">
-          <div className="h-[15%] text-gray-600 text-3xl shadow-md w-full border-b flex justify-center items-center">
+        <div
+          className={`w-[400px] h-[500px] ${
+            darkMode ? "bg-white/90 text-gray-600" : "bg-[#242424] text-white"
+          }  backdrop-blur-md border rounded-md relative`}
+        >
+          <div className="h-[15%]  text-3xl shadow-md w-full border-b flex justify-center items-center">
             <h2>ADD USERS</h2>
           </div>
           <div className="h-[85%] w-full ">
@@ -83,15 +90,17 @@ function AddUsers({ open, setOpen }) {
                   variant="outlined"
                 />
               </div>
-              <div className="bg-gray-300 px-2 py-2 rounded-md">
-                <input
-                  required
-                  type="file"
-                  onChange={handleFile}
-                  className="file:bg-purple-600 file:outline-none
+              <div className=" px-2 py-2 rounded-md">
+                <div className={`${darkMode ?'bg-slate-200':'bg-[#151515] '} rounded-full px-1 py-1`}>
+                  <input
+                    required
+                    type="file"
+                    onChange={handleFile}
+                    className="file:bg-purple-600 file:outline-none
                 file:border-none file:px-4 file:py-2 file:text-white
                  file:mr-4 file:rounded-full file:hover:bg-purple-800 file:duration-500"
-                />
+                  />
+                </div>
               </div>
               <div className="absolute bottom-1 left-5 py-3 rounded-md right-5 flex justify-center ">
                 <Button
