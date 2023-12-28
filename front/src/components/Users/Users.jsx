@@ -14,6 +14,7 @@ import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import LastPageIcon from "@mui/icons-material/LastPage";
 import {Paper, TablePagination } from "@mui/material";
+import { DarkModeContext } from "../Contexts/DarkModeContext";
 
 
 function TablePaginationActions(props) {
@@ -35,6 +36,8 @@ function TablePaginationActions(props) {
   const handleLastPageButtonClick = (event) => {
     onPageChange(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
   };
+
+
 
   return (
     <div className="flex   ml-[410px]">
@@ -89,6 +92,7 @@ TablePaginationActions.propTypes = {
 
 
 export const Users = () => {
+    const { darkMode } = React.useContext(DarkModeContext);
     const [open, setOpen] = React.useState(false);
     const [userState, dispatch] = React.useReducer(Usersreducer, {
       ListUsers: [],
@@ -170,20 +174,26 @@ export const Users = () => {
               startIcon={<BiNotepad />}
               onClick={(e) => setOpen(true)}
               variant="contained"
-              sx={{borderRadius:'20px'}}
+              sx={{ borderRadius: "20px" }}
               color="primary"
             >
               Add New
             </Button>
-            <div className="flex   overflow-hidden relative   bg-white/70 pl-3">
+            <div
+              className={`flex overflow-hidden relative ${
+                darkMode
+                  ? "bg-white/70 text-gray-600"
+                  : "bg-[#242424] rounded-md text-gray-300"
+              }  pl-3`}
+            >
               <input
                 onChange={(e) => setQuery(e.target.value)}
                 type="search"
                 placeholder="search..."
-                className="outline-none border-none bg-transparent text-gray-600"
+                className="outline-none border-none bg-transparent "
               />
-              <div className="bg-white backdrop-blur-md flex items-center w-10 justify-center absolute right-0 top-0 bottom-0">
-                <BiSearch className="text-[20px] text-[#0099ff]" />
+              <div className={`${darkMode?'bg-white text-[#0099ff]':'bg-black text-white'} bg-white backdrop-blur-md flex items-center w-10 justify-center absolute right-0 top-0 bottom-0`}>
+                <BiSearch className="text-[20px] " />
               </div>
             </div>
           </div>
@@ -203,23 +213,49 @@ export const Users = () => {
       {userState.loading ? (
         <div className="relative manch">
           <table className="w-[890px] border-collapse">
-            <thead className=" bg-white/60 text-gray-600 shadow-md   border-gray-600 z-10">
+            <thead
+              className={` ${
+                darkMode
+                  ? "bg-white/60 text-gray-600 border-gray-600"
+                  : "bg-[#191919] text-white border-gray-300"
+              }   shadow-md    z-10`}
+            >
               <tr>
-                <td className="border-r border-l w-[15%] py-4 px-3 font-semibold border-slate-300 border-t">
+                <td
+                  className={`${
+                    !darkMode ? "border-gray-600" : "border-slate-300"
+                  } border-r border-l w-[15%] py-4 px-3 font-semibold  border-t`}
+                >
                   USERNAME
                 </td>
-                <td className="border-r border-l w-[35%] py-4 px-3 font-semibold border-slate-300 border-t">
+                <td
+                  className={`${
+                    !darkMode ? "border-gray-600" : "border-slate-300"
+                  } border-r border-l w-[35%] py-4 px-3 font-semibold  border-t`}
+                >
                   EMAIL
                 </td>
-                <td className="border-r border-l w-[20%] py-4 px-3 font-semibold border-slate-300 border-t">
+                <td
+                  className={`${
+                    !darkMode ? "border-gray-600" : "border-slate-300"
+                  } border-r border-l w-[20%] py-4 px-3 font-semibold  border-t`}
+                >
                   PASSWORD
                 </td>
-                <td className="border-r border-l w-[15%] py-4 px-3 font-semibold border-slate-300 border-t">
+                <td
+                  className={`${
+                    !darkMode ? "border-gray-600" : "border-slate-300"
+                  } border-r border-l w-[15%] py-4 px-3 font-semibold  border-t`}
+                >
                   <div className="w-full h-full flex justify-center ">
                     PICTURE
                   </div>
                 </td>
-                <td className="border-r border-l w-[15%] py-4 px-3 font-semibold border-slate-300 border-t">
+                <td
+                  className={`${
+                    !darkMode ? "border-gray-600" : "border-slate-300"
+                  } border-r border-l w-[15%] py-4 px-3 font-semibold  border-t`}
+                >
                   <div className="w-full h-full flex justify-center ">
                     ACTIONS
                   </div>
@@ -228,8 +264,12 @@ export const Users = () => {
             </thead>
           </table>
           <div className="w-[890px] h-[233px] wrapperTable  overflow-y-auto overscroll-y-auto">
-            <table className="border-collapse bg-white/50 w-full  ">
-              <tbody className="text-gray-500 ">
+            <table
+              className={`${
+                !darkMode && "bg-[#242424] text-gray-200"
+              } text-gray-500 border-collapse bg-white/50 w-full  `}
+            >
+              <tbody className=" ">
                 {(rowsPerPage > 0
                   ? userState.ListUsers.slice(
                       page * rowsPerPage,
@@ -238,16 +278,32 @@ export const Users = () => {
                   : search(userState.ListUsers)
                 ).map((list, i) => (
                   <tr key={i} className="">
-                    <td className="border w-[15%] px-3 py-2 border-slate-300 uppercase">
+                    <td
+                      className={`${
+                        !darkMode ? "border-gray-600" : "border-slate-300"
+                      } border w-[15%] px-3 py-2  uppercase`}
+                    >
                       {list.username}
                     </td>
-                    <td className="border w-[35%] px-3 py-2 border-slate-300 ">
+                    <td
+                      className={`${
+                        !darkMode ? "border-gray-600" : "border-slate-300"
+                      } border w-[35%] px-3 py-2  `}
+                    >
                       {list.email}
                     </td>
-                    <td className="border w-[20%] px-3  max-w-[150px] overflow-hidden py-2 border-slate-300 ">
+                    <td
+                      className={`${
+                        !darkMode ? "border-gray-600" : "border-slate-300"
+                      } border w-[20%] px-3  max-w-[150px] overflow-hidden py-2 `}
+                    >
                       <div className="overflow-hidden">{list.password}</div>
                     </td>
-                    <td className="border w-[15%] px-3  max-w-[150px] overflow-hidden py-2 border-slate-300 ">
+                    <td
+                      className={`${
+                        !darkMode ? "border-gray-600" : "border-slate-300"
+                      } border w-[15%] px-3  max-w-[150px] overflow-hidden py-2 `}
+                    >
                       <div className="overflow-hidden w-full flex justify-center h-full ">
                         <img
                           className="w-12 rounded-md border-2 border-[#0099ff] h-12 object-cover bg-center "
@@ -256,7 +312,11 @@ export const Users = () => {
                         />
                       </div>
                     </td>
-                    <td className="border w-[15%] px-3 py-2 border-slate-300 ">
+                    <td
+                      className={`border w-[15%] px-3 py-2  ${
+                        !darkMode ? "border-gray-600" : "border-slate-300"
+                      }`}
+                    >
                       <div className="flex gap-3 w-full h-full justify-center">
                         <IconButton onClick={() => handledelete(list._id)}>
                           <BiTrash className="text-[25px] text-pink-600" />
