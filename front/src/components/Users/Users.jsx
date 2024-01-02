@@ -1,21 +1,20 @@
 import * as React from "react";
 import axios from "axios";
-import { BiTrash, BiEdit, BiSearch,BiNotepad } from "react-icons/bi";
+import { BiTrash, BiEdit, BiSearch, BiNotepad } from "react-icons/bi";
 import { Usersreducer } from "./Users.reducer";
 import AddUsers from "./AddUsers";
-import Button from '@mui/material/Button'
-import IconButton from '@mui/material/IconButton'
-import {toast } from 'react-toastify'
-import {Link} from 'react-router-dom'
+import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { useTheme } from "@mui/material/styles";
 import FirstPageIcon from "@mui/icons-material/FirstPage";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import LastPageIcon from "@mui/icons-material/LastPage";
-import {Paper, TablePagination } from "@mui/material";
+import { Paper, TablePagination } from "@mui/material";
 import { DarkModeContext } from "../Contexts/DarkModeContext";
-
 
 function TablePaginationActions(props) {
   const theme = useTheme();
@@ -36,8 +35,6 @@ function TablePaginationActions(props) {
   const handleLastPageButtonClick = (event) => {
     onPageChange(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
   };
-
-
 
   return (
     <div className="flex   ml-[410px]">
@@ -88,24 +85,22 @@ TablePaginationActions.propTypes = {
   rowsPerPage: PropTypes.number.isRequired,
 };
 
-
-
-
 export const Users = () => {
-    const { darkMode } = React.useContext(DarkModeContext);
-    const [open, setOpen] = React.useState(false);
-    const [userState, dispatch] = React.useReducer(Usersreducer, {
-      ListUsers: [],
-      loading: false,
-    });
-
+  const { darkMode } = React.useContext(DarkModeContext);
+  const [open, setOpen] = React.useState(false);
+  const [userState, dispatch] = React.useReducer(Usersreducer, {
+    ListUsers: [],
+    loading: false,
+  });
 
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - userState.ListUsers.length) : 0;
+    page > 0
+      ? Math.max(0, (1 + page) * rowsPerPage - userState.ListUsers.length)
+      : 0;
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -115,7 +110,6 @@ export const Users = () => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
-
 
   const getUsers = () => {
     axios
@@ -127,7 +121,6 @@ export const Users = () => {
             ListUsers: res.data,
           },
         });
-     
       })
       .catch((err) => {});
   };
@@ -136,33 +129,35 @@ export const Users = () => {
     getUsers();
   }, [userState]);
 
-  const handledelete=(id)=>{
-    axios.delete("http://localhost:7780/destroyUser/"+id).then(res=>{
-        const newList= userState.ListUsers.filter(user=>user._id !== id)
+  const handledelete = (id) => {
+    axios
+      .delete("http://localhost:7780/destroyUser/" + id)
+      .then((res) => {
+        const newList = userState.ListUsers.filter((user) => user._id !== id);
         dispatch({
           type: "destroyUser",
           payload: {
-            ListUsers:newList
+            ListUsers: newList,
           },
         });
-           toast.success(res.data);
+        toast.success(res.data);
+      })
+      .catch((err) => {});
+  };
 
-    }).catch(err=>{})
-  }
+  const [query, setQuery] = React.useState("");
 
-    const [query, setQuery] = React.useState("");
+  const keys = ["username", "email"];
 
-    const keys = ["username","email"];
-
-    const search = (data) => {
-      return data.filter((list) =>
-        keys.some(
-          (key) =>
-            list[key].toLowerCase().includes(query) ||
-            list[key].toUpperCase().includes(query)
-        )
-      );
-    };
+  const search = (data) => {
+    return data.filter((list) =>
+      keys.some(
+        (key) =>
+          list[key].toLowerCase().includes(query) ||
+          list[key].toUpperCase().includes(query)
+      )
+    );
+  };
 
   return (
     <div className="space-y-10">
@@ -183,7 +178,7 @@ export const Users = () => {
               className={`flex overflow-hidden relative ${
                 darkMode
                   ? "bg-white/70 text-gray-600"
-                  : "bg-[#242424] rounded-md text-gray-300"
+                  : "bg-[#242424]  text-gray-300"
               }  pl-3`}
             >
               <input
@@ -192,7 +187,11 @@ export const Users = () => {
                 placeholder="search..."
                 className="outline-none border-none bg-transparent "
               />
-              <div className={`${darkMode?'bg-white text-[#0099ff]':'bg-black text-white'} bg-white backdrop-blur-md flex items-center w-10 justify-center absolute right-0 top-0 bottom-0`}>
+              <div
+                className={`${
+                  darkMode ? "bg-white text-[#0099ff]" : "bg-black text-white"
+                }  backdrop-blur-md flex items-center w-10 justify-center absolute right-0 top-0 bottom-0`}
+              >
                 <BiSearch className="text-[20px] " />
               </div>
             </div>
@@ -266,8 +265,10 @@ export const Users = () => {
           <div className="w-[890px] h-[233px] wrapperTable  overflow-y-auto overscroll-y-auto">
             <table
               className={`${
-                !darkMode && "bg-[#242424] text-gray-200"
-              } text-gray-500 border-collapse bg-white/50 w-full  `}
+                !darkMode
+                  ? "bg-[#242424] text-gray-200"
+                  : "bg-white/50 text-gray-500"
+              }  border-collapse  w-full  `}
             >
               <tbody className=" ">
                 {(rowsPerPage > 0

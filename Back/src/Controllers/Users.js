@@ -5,7 +5,7 @@ const SaveUsers = async (req, res) => {
     username: req.body.username,
     email: req.body.email,
     password: req.body.password,
-    picture: req.file.filename,
+    picture: req?.file.filename,
   };
 
   try {
