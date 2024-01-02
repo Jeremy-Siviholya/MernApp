@@ -216,8 +216,8 @@ export const Users = () => {
               className={` ${
                 darkMode
                   ? "bg-white/60 text-gray-600 border-gray-600"
-                  : "bg-[#191919] text-white border-gray-300"
-              }   shadow-md    z-10`}
+                  : "bg-[#191919]  text-white border-gray-300"
+              }   shadow-md z-10`}
             >
               <tr>
                 <td
