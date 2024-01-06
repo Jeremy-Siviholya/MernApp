@@ -19,10 +19,11 @@ const SaveUsers = async (req, res) => {
     picture: req.file?.filename,
   };
 
+  const saveUser = new UserModel(values);
   try {
-    const saveUser = new UserModel(values);
-    await saveUser.save();
-    res.status(201).json("inserted Successfully");
+    const AuthToken = await saveUser.generateAuthTokenAndSaveUser();
+    // res.status(201).json("inserted Successfully");
+    res.status(201).send({ saveUser, AuthToken });
   } catch (e) {
     res.status(201).json(e);
   }
