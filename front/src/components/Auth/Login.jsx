@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import { BiSend } from "react-icons/bi";
 import TextField from "@mui/material/TextField";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -14,9 +15,13 @@ export default function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post("http://localhost:7780/user/Login", values).then((res) => {
+    axios.post("http://localhost:7780/user/Login", values)
+    .then((res) => {
       navigate('/')
-    });
+    })
+    .catch(err=>{
+      toast.warning(err.response.data);
+    })
   };
   return (
     <div className="w-screen h-screen bg-white/70 backdrop-blur-md z-50 fixed top-0 bottom-0 left-0 right-0 flex justify-center items-center">

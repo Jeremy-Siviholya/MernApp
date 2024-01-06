@@ -5,9 +5,9 @@ const Login = async (req, res) => {
   try {
     const user = await UserModel.findUser(req.body.email, req.body.password);
     res.send(user);
-    if(!user) res.status(201).send('user not find')
+    if (!user) res.status(201).send("user not find");
   } catch (e) {
-    res.status("400").send('something went wrong');
+    res.status("400").send("email or password not valid");
   }
 };
 
