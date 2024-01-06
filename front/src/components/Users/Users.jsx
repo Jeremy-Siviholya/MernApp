@@ -309,7 +309,7 @@ export const Users = () => {
                         <img
                           className="w-12 rounded-md border-2 border-[#0099ff] h-12 object-cover bg-center "
                           src={`http://localhost:7780/images/${list.picture}`}
-                          alt="hello"
+                          alt=""
                         />
                       </div>
                     </td>

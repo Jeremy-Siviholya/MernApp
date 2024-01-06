@@ -22,10 +22,10 @@ const SaveUsers = async (req, res) => {
   const saveUser = new UserModel(values);
   try {
     const AuthToken = await saveUser.generateAuthTokenAndSaveUser();
-    // res.status(201).json("inserted Successfully");
-    res.status(201).send({ saveUser, AuthToken });
+    res.status(201).json("inserted Successfully");
+    // res.status(201).send({ saveUser, AuthToken });
   } catch (e) {
-    res.status(201).json(e);
+    res.status(500).json("email already exist");
   }
 };
 

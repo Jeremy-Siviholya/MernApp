@@ -27,7 +27,7 @@ function AddUsers({ open, setOpen }) {
         setOpen(false);
       })
       .catch((err) => {
-        toast.error(err.message);
+        toast.error(err.response.data);
       });
   };
 
