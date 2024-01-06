@@ -1,11 +1,22 @@
-const bcrypt = require('bcryptjs');
+const bcrypt = require("bcryptjs");
 const UserModel = require("../Models/Users");
+
+const Login = async (req, res) => {
+  try {
+    const user = await UserModel.findUser(req.body.email, req.body.password);
+    res.send(user);
+    if(!user) res.status(201).send('user not find')
+  } catch (e) {
+    res.status("400").send(e);
+  }
+};
+
 const SaveUsers = async (req, res) => {
   const values = {
     username: req.body.username,
     email: req.body.email,
     password: req.body.password,
-    picture: req?.file.filename,
+    picture: req.file?.filename,
   };
 
   try {
@@ -97,4 +108,5 @@ module.exports = {
   updateUser,
   DestroyUser,
   CustomUpdate,
+  Login,
 };

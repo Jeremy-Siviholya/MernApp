@@ -15,6 +15,8 @@ const UserSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
+    unique: true,
+    trim: true,
     validate(v) {
       if (!validator.isEmail(v)) throw new Error("email invalide");
     },
@@ -31,6 +33,14 @@ const UserSchema = new mongoose.Schema({
     type: String,
   },
 });
+
+UserSchema.statics.findUser = async (email, password) => {
+  const user = await UserModel.findOne({ email });
+  if (!user) throw new mongoose.Error("user not find");
+  const isPasswordValid = await bcrypt.compare(password, user.password);
+  if (!isPasswordValid) throw new Error("password not valid");
+  return user;
+};
 
 UserSchema.pre("save", async function () {
   if (this.isModified("password"))

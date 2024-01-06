@@ -6,6 +6,7 @@ const {
   updateUser,
   DestroyUser,
   CustomUpdate,
+  Login,
 } = require("../Controllers/Users");
 const upload = require("../Controllers/Upload");
 const router = new express.Router();
@@ -15,5 +16,6 @@ router.get("/getUsers/:id", getIdUser);
 // router.patch("/updateUser/:id", upload.single("image"), CustomUpdate);
 router.patch("/updateUser/:id", upload.single("image"), updateUser);
 router.delete("/destroyUser/:id", DestroyUser);
+router.post("/user/Login", Login);
 
 module.exports = router;
