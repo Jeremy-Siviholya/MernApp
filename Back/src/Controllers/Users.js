@@ -7,7 +7,7 @@ const Login = async (req, res) => {
     res.send(user);
     if(!user) res.status(201).send('user not find')
   } catch (e) {
-    res.status("400").send(e);
+    res.status("400").send('something went wrong');
   }
 };
 

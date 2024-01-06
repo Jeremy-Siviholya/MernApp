@@ -15,7 +15,7 @@ export default function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios.post("http://localhost:7780/user/Login", values).then((res) => {
-      console.log(res.data);
+      navigate('/')
     });
   };
   return (

@@ -10,5 +10,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static("public"));
 Connectdb().catch((err) => console.log(err));
+
+const errorRoute=require('./src/routes/404')
 const UsersRoute = require("./src/routes/Users");
+
 app.use(UsersRoute);
+app.use(errorRoute)
