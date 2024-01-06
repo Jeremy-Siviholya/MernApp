@@ -1,3 +1,4 @@
+const bcrypt = require('bcryptjs');
 const UserModel = require("../Models/Users");
 const SaveUsers = async (req, res) => {
   const values = {
@@ -37,17 +38,18 @@ const getIdUser = async (req, res) => {
 };
 
 const updateUser = async (req, res) => {
+  const hashedPassword = await bcrypt.hash(req.body.password, 8);
   const values = {
     username: req.body.username,
     email: req.body.email,
-    password: req.body.password,
+    password: hashedPassword,
     picture: req.file?.filename,
   };
   try {
     const userId = req.params.id;
     const users = await UserModel.findByIdAndUpdate(userId, values, {
       new: true,
-      runValidators: true,
+      // runValidators: true,
     });
     if (!users) res.status(404).send("user not find");
     res.status(200).json("Updated successfully");
