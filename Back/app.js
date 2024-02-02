@@ -3,16 +3,16 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const port = process.env.PORT || 7778;
+// const port = process.env.PORT || 7778;
 
-app.listen(port, console.log(`listening on port http://localhost:${port}`));
+// app.listen(port, console.log(`listening on port http://localhost:${port}`));
 app.use(cors());
 app.use(express.json());
 app.use(express.static("public"));
 Connectdb().catch((err) => console.log(err));
 
-const errorRoute=require('./src/routes/404')
+const errorRoute = require("./src/routes/404");
 const UsersRoute = require("./src/routes/Users");
 
 app.use(UsersRoute);
-app.use(errorRoute)
+app.use(errorRoute);
