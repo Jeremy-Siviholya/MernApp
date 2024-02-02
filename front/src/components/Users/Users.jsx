@@ -113,7 +113,7 @@ export const Users = () => {
 
   const getUsers = () => {
     axios
-      .get("http://localhost:7780/getUsers")
+      .get("https://mernappback-c05x.onrender.com/getUsers")
       .then((res) => {
         dispatch({
           type: "userState",
@@ -131,7 +131,7 @@ export const Users = () => {
 
   const handledelete = (id) => {
     axios
-      .delete("http://localhost:7780/destroyUser/" + id)
+      .delete("https://mernappback-c05x.onrender.com/destroyUser/" + id)
       .then((res) => {
         const newList = userState.ListUsers.filter((user) => user._id !== id);
         dispatch({
@@ -308,7 +308,7 @@ export const Users = () => {
                       <div className="overflow-hidden w-full flex justify-center h-full ">
                         <img
                           className="w-12 rounded-md border-2 border-[#0099ff] h-12 object-cover bg-center "
-                          src={`http://localhost:7780/images/${list.picture}`}
+                          src={`https://mernappback-c05x.onrender.com/images/${list.picture}`}
                           alt=""
                         />
                       </div>

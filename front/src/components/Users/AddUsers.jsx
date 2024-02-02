@@ -21,12 +21,14 @@ function AddUsers({ open, setOpen }) {
     formdata.append("password", values.password);
 
     axios
-      .post("http://localhost:7780/SaveUsers/", formdata)
+      .post("https://mernappback-c05x.onrender.com/SaveUsers/", formdata)
       .then((res) => {
+      
         toast.success(res.data);
         setOpen(false);
       })
       .catch((err) => {
+      
         toast.error(err.response.data);
       });
   };
