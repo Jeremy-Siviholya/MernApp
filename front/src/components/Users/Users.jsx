@@ -90,7 +90,7 @@ export const Users = () => {
   const [open, setOpen] = React.useState(false);
   const [userState, dispatch] = React.useReducer(Usersreducer, {
     ListUsers: [],
-    loading: false,
+    loading: true,
   });
 
   const [page, setPage] = React.useState(0);

@@ -36,7 +36,7 @@ function AddUsers({ open, setOpen }) {
     setFile(e.target.files[0]);
   };
 
-  const {darkMode}=React.useContext(DarkModeContext)
+  const { darkMode } = React.useContext(DarkModeContext);
 
   return (
     <div>
@@ -91,7 +91,11 @@ function AddUsers({ open, setOpen }) {
                 />
               </div>
               <div className=" px-2 py-2 rounded-md">
-                <div className={`${darkMode ?'bg-slate-200':'bg-[#151515] '} rounded-full px-1 py-1`}>
+                <div
+                  className={`${
+                    darkMode ? "bg-slate-200" : "bg-[#151515] "
+                  } rounded-full px-1 py-1`}
+                >
                   <input
                     required
                     type="file"
