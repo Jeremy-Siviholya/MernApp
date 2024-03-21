@@ -127,7 +127,7 @@ export const Users = () => {
 
   React.useEffect(() => {
     getUsers();
-  }, [userState]);
+  }, [dispatch]);
 
   const handledelete = (id) => {
     axios
@@ -271,13 +271,13 @@ export const Users = () => {
               }  border-collapse  w-full  `}
             >
               <tbody className=" ">
-                {(rowsPerPage > 0
+                {search( (rowsPerPage > 0
                   ? userState.ListUsers.slice(
                       page * rowsPerPage,
                       page * rowsPerPage + rowsPerPage
                     )
-                  : search(userState.ListUsers)
-                ).map((list, i) => (
+                  : userState.ListUsers
+                )).map((list, i) => (
                   <tr key={i} className="">
                     <td
                       className={`${
