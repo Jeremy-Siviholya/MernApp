@@ -77,7 +77,7 @@ const DestroyUser = async (req, res) => {
     await UserModel.findByIdAndDelete(userId).then((result)=>{
       // fs.unlinkSync(`../../public/images/${result.picture}`)
       res.status(200).json("destroyed successfuly");
-      console.log(result.picture);
+      // console.log(result.picture);
     });
     // if (!users) res.status(404).json("user not find");
     // res.status(200).json("destroyed successfuly");
