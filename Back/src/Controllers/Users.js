@@ -1,5 +1,6 @@
 const bcrypt = require("bcryptjs");
 const UserModel = require("../Models/Users");
+const fs=require('fs')
 
 const Login = async (req, res) => {
   try {
@@ -25,7 +26,7 @@ const SaveUsers = async (req, res) => {
     res.status(201).json("inserted Successfully");
     // res.status(201).send({ saveUser, AuthToken });
   } catch (e) {
-    res.status(500).json("email already exist");
+    res.status(500).json("verify fields");
   }
 };
 
@@ -73,9 +74,13 @@ const updateUser = async (req, res) => {
 const DestroyUser = async (req, res) => {
   try {
     const userId = req.params.id;
-    const users = await UserModel.findByIdAndDelete(userId);
-    if (!users) res.status(404).json("user not find");
-    res.status(200).json("destroyed successfuly");
+    await UserModel.findByIdAndDelete(userId).then((result)=>{
+      // fs.unlinkSync(`../../public/images/${result.picture}`)
+      res.status(200).json("destroyed successfuly");
+      console.log(result.picture);
+    });
+    // if (!users) res.status(404).json("user not find");
+    // res.status(200).json("destroyed successfuly");
   } catch (e) {
     res.status(500).json(e);
   }

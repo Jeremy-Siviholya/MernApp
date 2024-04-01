@@ -16,7 +16,7 @@ export default function UpdateUser() {
 
   const getIdUser = () => {
     axios
-      .get("https://mernappback-c05x.onrender.com/getUsers/" + id)
+      .get("http://localhost:7780/getUsers/" + id)
       .then((res) => {
         setvalues({
           ...values,
@@ -43,10 +43,10 @@ export default function UpdateUser() {
     formdata.append("email", values.email);
     formdata.append("password", values.password);
     axios
-      .patch("https://mernappback-c05x.onrender.com/updateUser/" + id, formdata)
+      .patch("http://localhost:7780/updateUser/" + id, formdata)
       .then((res) => {
-        navigate("/");
         toast.success(res.data);
+        navigate("/");
       })
       .catch((err) => {
         toast.error(err);
