@@ -1,23 +1,15 @@
-const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
 const UserModel = require("../Models/Users");
-const fs=require('fs')
 
-const Login = async (req, res) => {
-  try {
-    const user = await UserModel.findUser(req.body.email, req.body.password);
-    res.send(user);
-    if (!user) res.status(201).send("user not find");
-  } catch (e) {
-    res.status("400").send("email or password not valid");
-  }
-};
+const salt = 10;
 
-const SaveUsers = async (req, res) => {
+const saveUser =async (req, res) => {
   const values = {
     username: req.body.username,
     email: req.body.email,
     password: req.body.password,
-    picture: req.file?.filename,
+    // picture: req.file?.filename,
   };
 
   const saveUser = new UserModel(values);
@@ -26,18 +18,14 @@ const SaveUsers = async (req, res) => {
     res.status(201).json("inserted Successfully");
     // res.status(201).send({ saveUser, AuthToken });
   } catch (e) {
-    res.status(500).json("verify fields");
+    res.status(500).json("email already exist");
   }
+
+
+
+
 };
 
-const getUsers = async (req, res) => {
-  try {
-    const users = await UserModel.find({});
-    res.send(users);
-  } catch (e) {
-    res.status(500).send(e);
-  }
-};
 
 const getIdUser = async (req, res) => {
   try {
@@ -107,12 +95,46 @@ const CustomUpdate = async (req, res) => {
   }
 };
 
+const login =async (req, res) => {
+  try {
+    const user = await UserModel.findUser(req.body.username, req.body.password);
+    res.send(user);
+    if (!user) res.status(201).send("user not find");
+  } catch (e) {
+    res.status("400").send("username or password not valid");
+  }
+};
+
+
+
+
+const getUsers =async (req, res) => {
+  try {
+    const users = await UserModel.find({});
+    res.send(users);
+  } catch (e) {
+    res.status(500).send(e);
+  }
+
+};
+
+
+const verifytoken= (req, res, next) => {
+  res.clearCookie('token');
+  next();
+};
+
+// Route to handle user logout and clear the cookie
+
+const Logout=(req, res) => {
+  // Perform any other logout actions here
+  // res.status(200).send({ message: 'Cookie cleared and user logged out successfully' });
+}
+
 module.exports = {
-  SaveUsers,
+  saveUser,
+  login,
+  verifytoken,
   getUsers,
-  getIdUser,
-  updateUser,
-  DestroyUser,
-  CustomUpdate,
-  Login,
+  Logout
 };

@@ -43,8 +43,8 @@ const UserSchema = new mongoose.Schema({
   ],
 });
 
-UserSchema.statics.findUser = async (email, password) => {
-  const user = await UserModel.findOne({ email });
+UserSchema.statics.findUser = async (username, password) => {
+  const user = await UserModel.findOne({ username });
   if (!user) throw new mongoose.Error("user not find");
   const isPasswordValid = await bcrypt.compare(password, user.password);
   if (!isPasswordValid) throw new Error("password not valid");
