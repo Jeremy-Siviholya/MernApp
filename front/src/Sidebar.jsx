@@ -51,12 +51,13 @@ function Sidebar({open,darkMode}) {
     //   margin: true,
     // },
   ];
+  
   return (
     <div
     className={`${
-      darkMode ? "bg-[#E2DFE6] shadow-md " : "bg-[#212121]  to-purple-800  shadow-md border-r-[0.1px] border-gray-500  text-gray-200"
+      darkMode ? "bg-purple-200 shadow-md " : "bg-[#212121]  to-purple-800  shadow-md border-r-[0.1px] border-gray-500  text-gray-200"
     }  ${
-      open ? "w-[4.5rem]" :'w-72 '
+      open ? "w-[4.5rem]" :'w-60 '
     }  duration-500    h-full px-4`}
   >
 
@@ -70,12 +71,12 @@ function Sidebar({open,darkMode}) {
           // className={({isActive})=>isActive? 'bg-pink-500':''}
             to={menu.link}
             key={i}
-            className={  `${menu?.margin && "mt-7"} 
+            className={`${menu?.margin && "mt-7"} 
             
             ${
               darkMode
                 ? "hover:bg-blue-100  text-gray-600 "
-                : "hover:bg-gray-600"
+                : "hover:bg-gray-600 "
             } ${
               menu.marge && "mt-[8rem] mb-10"
             } group flex items-center  text-sm gap-[25px] font-semibold     p-2  rounded-md`}

@@ -3,8 +3,18 @@
 @tailwind utilities;
 
 
-.wrapperTable::-webkit-scrollbar{
-    @apply w-[0px] 
+/* .active{
+    @apply  text-gray-700 rounded-md;
+
+     box-shadow:  2px 2px 4px rgb(202, 183, 202),
+     -2px -2px 4px rgb(243, 239, 243);
+} */
+
+
+.active{
+    @apply  text-white rounded-md;
+    box-shadow:  2px 2px 4px rgb(22, 21, 21),
+     -2px -2px 4px rgb(49, 49, 48);
 }
 
 
