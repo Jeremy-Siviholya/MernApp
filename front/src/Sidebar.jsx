@@ -1,18 +1,13 @@
 import * as React from 'react'
 import { NavLink } from 'react-router-dom'
 import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
-import AssignmentIcon from "@mui/icons-material/Assignment";
 import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
 import MonetizationOnSharpIcon from "@mui/icons-material/MonetizationOnSharp";
-
-
+import CameraIcon from '@mui/icons-material/Camera';
 import DashBoardIcon from '@mui/icons-material/Dashboard'
 
 
-
-function Sidebar({open,darkMode}) {
-
-    
+function Sidebar({open,darkMode}) { 
   const menus = [
     {
       name: "DashBoard",
@@ -27,9 +22,9 @@ function Sidebar({open,darkMode}) {
       margin: true,
     },
     {
-      name: "Personnel",
-      link: "/Teacher",
-      icon: AssignmentIcon,
+      name: "Galery",
+      link: "/galery",
+      icon: CameraIcon,
       margin: true,
     },
     {

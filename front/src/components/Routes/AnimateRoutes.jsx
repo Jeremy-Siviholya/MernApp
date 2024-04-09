@@ -6,6 +6,7 @@ import Error404 from '../Errors/Error404';
 
 import Root from '../Root/Root';
 import Users from '../Users/Users';
+import Galery from '../Galery/Galery';
 
 const router=createBrowserRouter([
   {
@@ -16,6 +17,11 @@ const router=createBrowserRouter([
 {
   path:'/users',
   element:<Users/>
+},
+
+{
+  path:'/galery',
+  element:<Galery/>
 }
 
   ]

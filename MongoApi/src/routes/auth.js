@@ -28,12 +28,27 @@ router.get(
 	passport.authenticate("google", {
 		successRedirect: process.env.CLIENT_URL,
 		failureRedirect: "/login/failed",
-	})
+	}),
+
+	
 );
 
 router.get("/auth/logout", (req, res) => {
-	req.logout();
-	res.redirect(process.env.CLIENT_URL);
+	// req.logout();
+	res.redirect(process.env.CLIENT_URL_LOGIN);
 });
+
+
+//github
+
+router.get("/auth/github", passport.authenticate("google", ["profile", "email"]));
+
+router.get(
+	"/auth/github/callback",
+	passport.authenticate("github", {
+		successRedirect: process.env.CLIENT_URL,
+		failureRedirect: "/login/failed",
+	})
+);
 
 module.exports = router;

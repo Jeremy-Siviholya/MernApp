@@ -49,10 +49,10 @@ const statsRoutes=require('./src/routes/Stats')
 const PayRoute=require('./src/routes/Paiement')
 
 const userRoutes=require('./src/routes/Users')
-// const authRoute=require('./src/routes/auth')
+const authRoute=require('./src/routes/auth')
 
 
-// app.use(authRoute)
+app.use(authRoute)
 
 app.use(userRoutes)
 app.use(PayRoute)

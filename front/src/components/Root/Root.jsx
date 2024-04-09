@@ -4,6 +4,7 @@ import Sidebar from "../../Sidebar";
 import { IconButton } from "@mui/material";
 import { BiMenu, BiSun } from "react-icons/bi";
 import { DarkModeContext } from "../Contexts/DarkModeContext";
+import { AuthContext } from "../Contexts/AuthContext";
 
 
 
@@ -14,6 +15,7 @@ import { DarkModeContext } from "../Contexts/DarkModeContext";
 export default function Root() {
 
     const {darkMode,toggle}=React.useContext(DarkModeContext)
+    const {logout}=React.useContext(AuthContext)
   const [open, setOpen] = React.useState(false);
 
   return (
@@ -28,6 +30,9 @@ export default function Root() {
           <IconButton onClick={toggle}>
             <BiSun className="text-white" />
           </IconButton>
+
+
+          <button onClick={logout}>logout</button>
         </div>
       </div>
       <div className="h-screen">

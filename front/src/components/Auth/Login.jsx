@@ -1,69 +1,102 @@
 import * as React from "react";
 import { useNavigate } from "react-router-dom";
-import Button from "@mui/material/Button";
-import { BiSend } from "react-icons/bi";
-import TextField from "@mui/material/TextField";
-import axios from "axios";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { SiLightning } from "react-icons/si";
+import { MdLightMode } from "react-icons/md";
+import { AuthContext } from "../Contexts/AuthContext";
+import { DarkModeContext } from "../Contexts/DarkModeContext";
+import googleicon from '../../assets/google.png'
+import githubicon from '../../assets/github.png'
 
 export default function Login() {
-  const navigate = useNavigate();
-  const [values, setValues] = React.useState({
-    email: "",
-    password: "",
-  });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    axios.post("http://localhost:7780/user/Login", values)
-    .then((res) => {
-      navigate('/')
-    })
-    .catch(err=>{
-      toast.warning(err.response.data);
-    })
-  };
+ const { login,loginAuth } = React.useContext(AuthContext);
+
+ const { darkMode, toggle } = React.useContext(DarkModeContext);
+
+
   return (
-    <div className="w-screen h-screen bg-white/70 backdrop-blur-md z-50 fixed top-0 bottom-0 left-0 right-0 flex justify-center items-center">
-      <div className="w-[400px] h-[500px] relative  bg-white shadow-2xl overflow-hidden rounded-md border">
-        <div className="h-[15%] flex justify-center items-center relative border-b">
-          <h2 className="text-2xl text-gray-600">LOGIN</h2>
-        </div>
-        <form className="h-[85%] w-full ">
-          <div className="h-full flex py-24 ">
-            <div className="space-y-7 px-10">
-              <TextField
-                fullWidth
-                type="email"
-                onChange={(e) =>
-                  setValues({ ...values, email: e.target.value })
-                }
-                variant="outlined"
-                label="email"
-              />
-              <TextField
-                fullWidth
-                onChange={(e) =>
-                  setValues({ ...values, password: e.target.value })
-                }
-                variant="outlined"
-                label="Password"
-                type="password"
-              />
-            </div>
-          </div>
-          <div className="absolute bottom-5 w-full flex justify-center">
-            <Button
-              endIcon={<BiSend />}
-              onClick={handleSubmit}
-              variant="contained"
-              color="primary"
-            >
-              sign in
-            </Button>
-          </div>
-        </form>
+    <div
+      className={`${
+        darkMode ? "bg-gray-100" : "bg-[#363636]"
+      } h-screen w-screen flex justify-center relative items-center`}
+    >
+      <div className="absolute top-0 w-full flex justify-center">
+        <button
+          onClick={toggle}
+          className={`h-14  ${
+            !darkMode ? "text-gray-200" : "text-gray-600"
+          }  uppercase font-semibold flex items-center justify-start space-x-4 px-2`}
+        >
+          {!darkMode ? (
+            <SiLightning className="text-[25px]" />
+          ) : (
+            <MdLightMode className="text-[25px]" />
+          )}
+          <span>{!darkMode ? "Dark" : "Light"}</span>
+        </button>
       </div>
+
+      <div
+        className={`${
+          darkMode ? "bg-white border-blue-600" : "bg-black/60 border-gray-300"
+        }  rounded-md backdrop-blur-md  shadow-lg absolute  h-[400px] w-[400px]   overflow-hidden`}
+      >
+        <div
+          className={`${
+            darkMode ? "border-gray-300" : "border-gray-600"
+          }  h-[20%] border-b flex justify-center items-center  relative`}
+        >
+          <h1
+            className={`text-xl ${
+              darkMode ? "text-gray-600" : "text-gray-200"
+            }  font-semibold`}
+          >
+            SIGN IN
+          </h1>
+        </div>
+        <div className="h-[80%] flex pt-16 ">
+          <div className="space-y-10 w-full px-10 ">
+            <div className="flex justify-center">
+
+          <button  onClick={login}
+          className="bg-violet-100 shadow-sm border px-3 py-2 flex items-center gap-4 rounded-full text-gray-600 uppercase font-semibold"
+          >
+           <img src={googleicon} className="w-6 h-6" alt="" />
+           <span>Google</span>
+          </button>
+            </div>
+
+          <div className="h-1 bg-gray-300 w-full relative divider ">
+
+          </div>
+          <div className="flex justify-center">
+          <button  onClick={loginAuth}
+          className="bg-violet-100 shadow-sm border px-3 py-2 flex items-center gap-4 rounded-full text-gray-600 uppercase font-semibold"
+          >
+           <img src={githubicon} className="w-6 h-6" alt="" />
+           <span>Github</span>
+          </button>
+          </div>
+        
+          </div>
+        
+        </div>
+      </div>
+
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   );
 }
