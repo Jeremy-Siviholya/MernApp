@@ -41,7 +41,7 @@ router.get("/auth/logout", (req, res) => {
 
 //github
 
-router.get("/auth/github", passport.authenticate("google", ["profile", "email"]));
+router.get("/auth/github", passport.authenticate("github", ["profile", "email"]));
 
 router.get(
 	"/auth/github/callback",

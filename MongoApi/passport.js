@@ -1,4 +1,5 @@
-const passport=require('passport')
+const passport=require('passport');
+
 const GoogleStrategy=require("passport-google-oauth20").Strategy
 
 
@@ -38,9 +39,10 @@ passport.use(
 			scope: ["profile", "email"],
 			// passReqToCallback:true
 		},
-		function (accessToken, refreshToken, profile, done) {
+	async	function  (accessToken, refreshToken, profile, done) {
 			 if (profile) {
 				return done(null, profile);
+               
 			} else {
 				return done(new Error('Erreur lors de la vérification de l\'utilisateur'));
 			}
