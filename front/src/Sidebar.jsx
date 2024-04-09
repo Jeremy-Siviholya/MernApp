@@ -1,8 +1,6 @@
 import * as React from 'react'
 import { NavLink } from 'react-router-dom'
-import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
 import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
-import MonetizationOnSharpIcon from "@mui/icons-material/MonetizationOnSharp";
 import CameraIcon from '@mui/icons-material/Camera';
 import DashBoardIcon from '@mui/icons-material/Dashboard'
 
@@ -27,24 +25,7 @@ function Sidebar({open,darkMode}) {
       icon: CameraIcon,
       margin: true,
     },
-    {
-      name: "Notes",
-      link: "/Notes",
-      icon: AssignmentTurnedInIcon,
-      margin: true,
-    },
-    {
-      name: "Paiement",
-      link: "/Fee",
-      icon: MonetizationOnSharpIcon,
-      margin: true,
-    },
-    // {
-    //   name: "Users",
-    //   link: "/Users",
-    //   icon: UseIcon,
-    //   margin: true,
-    // },
+    
   ];
   
   return (
@@ -57,7 +38,7 @@ function Sidebar({open,darkMode}) {
   >
 
     <div
-      className={`pt-28 flex flex-col gap-2 relative ${open && "mx-auto"} `}
+      className={`pt-40 flex flex-col gap-2 relative ${open && "mx-auto"} `}
     >
       {menus.map((menu, i) => (
       
