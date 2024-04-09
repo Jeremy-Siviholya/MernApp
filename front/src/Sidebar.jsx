@@ -31,7 +31,7 @@ function Sidebar({open,darkMode}) {
   return (
     <div
     className={`${
-      darkMode ? "bg-purple-200 shadow-md " : "bg-[#212121]  to-purple-800  shadow-md border-r-[0.1px] border-gray-500  text-gray-200"
+      darkMode ? "bg-purple-200 shadow-md " : "bg-[#212121]   shadow-md border-r-[0.1px] border-gray-500  text-gray-200"
     }  ${
       open ? "w-[4.5rem]" :'w-60 '
     }  duration-500    h-full px-4`}
